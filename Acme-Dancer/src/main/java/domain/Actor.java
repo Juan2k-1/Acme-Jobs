@@ -1,9 +1,15 @@
 
 package domain;
 
+import java.util.List;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
@@ -11,21 +17,31 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Actor extends DomainEntity {
 
 	@NotBlank
-	private String		nombre;
+	private String				nombre;
 
 	@NotBlank
-	private String		apellidos;
+	private String				apellidos;
 
 	@Email
-	private String		email;
+	private String				email;
 
 	@Pattern(regexp = "[0-9]{9}")
-	private String		telefono;
+	private String				telefono;
 
-	private Direccion	direccion;
+	private Direccion			direccion;
+
+	@OneToMany(mappedBy = "Autor")
+	private List<Comentario>	comentarios;
+
+	@ManyToMany
+	private List<Actor>			publicadores;
+
+	@ManyToMany
+	private List<Actor>			subscriptores;
 
 
 	public String getNombre() {
@@ -68,4 +84,27 @@ public abstract class Actor extends DomainEntity {
 		this.direccion = direccion;
 	}
 
+	public List<Comentario> getComentarios() {
+		return this.comentarios;
+	}
+
+	public void setComentarios(final List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public List<Actor> getPublicadores() {
+		return this.publicadores;
+	}
+
+	public void setPublicadores(final List<Actor> publicadores) {
+		this.publicadores = publicadores;
+	}
+
+	public List<Actor> getSubscriptores() {
+		return this.subscriptores;
+	}
+
+	public void setSubscriptores(final List<Actor> subscriptores) {
+		this.subscriptores = subscriptores;
+	}
 }

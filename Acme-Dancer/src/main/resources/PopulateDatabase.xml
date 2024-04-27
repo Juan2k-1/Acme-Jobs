@@ -90,37 +90,72 @@
 		</property>
 	</bean>
 
-	<!---Entidad Alumno-->
+	<!-- Entidad TarjetaCredito -->
+	<bean id="tarjeta1" class="domain.TarjetaCredito">
+		<property name="titular" value="Juan Alberto Dominguez" />
+		<property name="marca" value="Visa" />
+		<property name="numero" value="4111111111111111" />
+		<property name="mes" value="03" />
+		<property name="año" value="2025" />
+		<property name="codigoCVV" value="123" />
+		<property name="alumno">
+			<bean class="domain.Alumno">
+				<property name="nombre" value="Juan_Alberto" />
+				<property name="apellido" value="Dominguez" />
+				<property name="email" value="juan@gmail.com" />
+				<property name="telefono" value="987654321" />
+				<property name="direccion">
+					<bean class="domain.Direccion">
+						<property name="direccion" value="Calle Puerto 12" />
+						<property name="codigoPostal" value="" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tarjeta2" class="domain.TarjetaCredito">
+		<property name="titular" value="Juan Alberto Dominguez" />
+		<property name="marca" value="MasterCard" />
+		<property name="numero" value="3111111111111111" />
+		<property name="mes" value="04" />
+		<property name="año" value="2025" />
+		<property name="codigoCVV" value="321" />
+	</bean>
+
+	<!---Entidad Alumno -->
 	<bean id="alumno1" parent="actor1" class="domain.Alumno">
 		<property name="comentarios">
-    		<list>
+			<list>
 				<ref bean="comentario1" />
 				<ref bean="comentario2" />
-      		</list>
-  		</property>
+			</list>
+		</property>
 		<property name="registeredFor">
-    		<list>
+			<list>
 				<ref bean="registeredFor1" />
 				<ref bean="registeredFor2" />
 				<ref bean="registeredFor3" />
-      		</list>
-  		</property>
-  	</bean>
+			</list>
+		</property>
+	</bean>
 
-	<!---Entidad Comentario-->
+	<!---Entidad Comentario -->
 	<bean id="comentario1" class="domain.Comentario">
-  		<property name="autor" ref="alumno1" />
-  		<property name="momento" value="2024-04-27T12:34:56.789Z" />
-  		<property name="descripcion" value="Este es un comentario de prueba para el Alumno1." />
+		<property name="autor" ref="alumno1" />
+		<property name="momento" value="2024-04-27T12:34:56.789Z" />
+		<property name="descripcion"
+			value="Este es un comentario de prueba para el Alumno1." />
 	</bean>
 
 	<bean id="comentario2" class="domain.Comentario">
-  		<property name="autor" ref="alumno1" />
-  		<property name="momento" value="2024-03-27T12:34:56.789Z" />
-  		<property name="descripcion" value="Este es un segundo comentario del Alumno1." />
+		<property name="autor" ref="alumno1" />
+		<property name="momento" value="2024-03-27T12:34:56.789Z" />
+		<property name="descripcion"
+			value="Este es un segundo comentario del Alumno1." />
 	</bean>
 
-	<!---Entidad RegisteredFor-->
+	<!---Entidad RegisteredFor -->
 	<bean id="registeredFor1" class="domain.registeredFor">
 		<property name="alumno" ref="alumno1" />
 		<property name="curso" ref="curso1" />
@@ -147,33 +182,33 @@
 			<value>RECHAZADO</value>
 		</property>
 	</bean>
-	
-	<!---Entidad Estilo-->
+
+	<!---Entidad Estilo -->
 	<bean id="estilo1" class="domain.Estilo">
-  		<property name="nombre" value="Break Dance" />
-  		<property name="descripcion" value="baile callejero" />
-  		<property name="imagen">
-		<list>
-			<ref bean="imagen1" />
-			<ref bean="imagen2" />
-		</list>
-  		</property>
-  		<property name="video">
-		<list>
-			<ref bean="video1" />
-			<ref bean="video2" />
-		</list>
-  		</property>
+		<property name="nombre" value="Break Dance" />
+		<property name="descripcion" value="baile callejero" />
+		<property name="imagen">
+			<list>
+				<ref bean="imagen1" />
+				<ref bean="imagen2" />
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<ref bean="video1" />
+				<ref bean="video2" />
+			</list>
+		</property>
 	</bean>
 
-	<!---Entidad Curso-->
+	<!---Entidad Curso -->
 	<bean id="estilo1" class="domain.Curso">
-  		<property name="titulo" value="titulocurso1" />
-  		<property name="estilo" ref="estilo1" />
-  		<property name="nivel" ref="AVANZADO" />
-  		<property name="fechaInicio" value="2025-02-27" />
-  		<property name="fechaFin" value="2025-03-27" />
-  		<property name="hora" value="12:15" />
+		<property name="titulo" value="titulocurso1" />
+		<property name="estilo" ref="estilo1" />
+		<property name="nivel" ref="AVANZADO" />
+		<property name="fechaInicio" value="2025-02-27" />
+		<property name="fechaFin" value="2025-03-27" />
+		<property name="hora" value="12:15" />
 	</bean>
 
 

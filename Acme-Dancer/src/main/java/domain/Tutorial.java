@@ -56,4 +56,11 @@ public class Tutorial extends DomainEntity {
 		this.video = video;
 	}
 
+	public Academia getAcademia() {
+		return this.academia;
+	}
+
+	public void setAcademia(final Academia academia) {
+		this.academia = academia;
+	}
 }

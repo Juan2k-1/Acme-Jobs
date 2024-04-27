@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.Date;
@@ -13,43 +14,43 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Comentario extends DomainEntity{
+public class Comentario extends DomainEntity {
 
-    @ManyToOne
-    private Actor autor;
+	@ManyToOne(optional = true)
+	private Actor	autor;
 
-    @Past
-    private Date momento;
+	@Past
+	private Date	momento;
 
-    @NotBlank
-    @Size(min = 1, max = 140)
-    private String descripcion;
+	@NotBlank
+	@Size(min = 1, max = 140)
+	private String	descripcion;
 
 
-    //Getters y Setters
+	//Getters y Setters
 
-    public Actor getActor(){
-        return this.autor;
-    }
+	public Actor getActor() {
+		return this.autor;
+	}
 
-    public void setAutor(Actor autor){
-        this.autor = autor;
-    }
+	public void setAutor(final Actor autor) {
+		this.autor = autor;
+	}
 
-    public Date getMomento() {
-        return momento;
-    }
+	public Date getMomento() {
+		return this.momento;
+	}
 
-    public void setMomento(Date momento) {
-        this.momento = momento;
-    }
+	public void setMomento(final Date momento) {
+		this.momento = momento;
+	}
 
-    public String getDescripcion(){
-        return this.descripcion;
-    }
+	public String getDescripcion() {
+		return this.descripcion;
+	}
 
-    public void setDescripcion(String descripcion){
-        this.descripcion = descripcion;
-    }
+	public void setDescripcion(final String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 }
