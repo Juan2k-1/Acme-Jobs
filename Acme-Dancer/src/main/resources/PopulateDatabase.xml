@@ -94,19 +94,15 @@
 	<bean id="alumno1" parent="actor1" class="domain.Alumno">
 		<property name="comentarios">
     		<list>
-      			<bean class="domain.Comentario">
-					<ref bean="comentario1" />
-					<ref bean="comentario2" />
-        		</bean>
+				<ref bean="comentario1" />
+				<ref bean="comentario2" />
       		</list>
   		</property>
 		<property name="registeredFor">
     		<list>
-      			<bean class="domain.registeredFor">
-					<ref bean="registeredFor1" />
-					<ref bean="registeredFor2" />
-					<ref bean="registeredFor3" />
-        		</bean>
+				<ref bean="registeredFor1" />
+				<ref bean="registeredFor2" />
+				<ref bean="registeredFor3" />
       		</list>
   		</property>
   	</bean>
