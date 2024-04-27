@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.Date;
@@ -12,65 +13,60 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Past;
 
-enum Estado {
-    PENDIENTE,
-    ACEPTADO,
-    RECHAZADO
-}
-
 @Entity
 public class registeredFor {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "alumno_id") //Esta anotación se utiliza para especificar la columna de la tabla relacionada que se utilizará para unir las dos entidades.
-    private Alumno alumno;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long	id;
 
-    @ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
+	@ManyToOne
+	@JoinColumn(name = "alumno_id") //Esta anotación se utiliza para especificar la columna de la tabla relacionada que se utilizará para unir las dos entidades.
+	private Alumno	alumno;
 
-    @Past
-    private Date momento;
+	@ManyToOne
+	@JoinColumn(name = "curso_id")
+	private Curso	curso;
 
-    @Enumerated(EnumType.STRING)
-    private Estado estado;
+	@Past
+	private Date	momento;
 
-    //Getters y Setters
+	@Enumerated(EnumType.STRING)
+	private Estado	estado;
 
-    public Alumno getAlumno() {
-        return alumno;
-    }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
+	//Getters y Setters
 
-    public Curso getCurso() {
-        return curso;
-    }
+	public Alumno getAlumno() {
+		return this.alumno;
+	}
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+	public void setAlumno(final Alumno alumno) {
+		this.alumno = alumno;
+	}
 
-    public Date getMomento() {
-        return momento;
-    }
+	public Curso getCurso() {
+		return this.curso;
+	}
 
-    public void setMomento(Date momento) {
-        this.momento = momento;
-    }
+	public void setCurso(final Curso curso) {
+		this.curso = curso;
+	}
 
-    public Estado getEstado() {
-        return estado;
-    }
+	public Date getMomento() {
+		return this.momento;
+	}
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+	public void setMomento(final Date momento) {
+		this.momento = momento;
+	}
+
+	public Estado getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(final Estado estado) {
+		this.estado = estado;
+	}
 
 }
