@@ -1,19 +1,15 @@
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
-import javax.persistence.Id;
 
 import java.util.List;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Alumno extends Actor{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     //Relaciones
 
