@@ -147,5 +147,34 @@
 			<value>RECHAZADO</value>
 		</property>
 	</bean>
+	
+	<!---Entidad Estilo-->
+	<bean id="estilo1" class="domain.Estilo">
+  		<property name="nombre" value="Break Dance" />
+  		<property name="descripcion" value="baile callejero" />
+  		<property name="imagen">
+		<list>
+			<ref bean="imagen1" />
+			<ref bean="imagen2" />
+		</list>
+  		</property>
+  		<property name="video">
+		<list>
+			<ref bean="video1" />
+			<ref bean="video2" />
+		</list>
+  		</property>
+	</bean>
+
+	<!---Entidad Curso-->
+	<bean id="estilo1" class="domain.Curso">
+  		<property name="titulo" value="titulocurso1" />
+  		<property name="estilo" ref="estilo1" />
+  		<property name="nivel" ref="AVANZADO" />
+  		<property name="fechaInicio" value="2025-02-27" />
+  		<property name="fechaFin" value="2025-03-27" />
+  		<property name="hora" value="12:15" />
+	</bean>
+
 
 </beans>
