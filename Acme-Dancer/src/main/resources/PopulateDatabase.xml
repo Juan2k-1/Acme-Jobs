@@ -172,6 +172,7 @@
   		</property>
 	</bean>
 
+
 	<!---Entidad Curso-->
 	<bean id="estilo1" class="domain.Curso">
   		<property name="titulo" value="titulocurso1" />
