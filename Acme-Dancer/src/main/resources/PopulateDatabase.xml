@@ -164,16 +164,30 @@
 			<ref bean="video2" />
 		</list>
   		</property>
+  		 <property name="Cursos">
+		<list>
+			<ref bean="Curso1" />
+			<ref bean="Curso2" />
+		</list>
+  		</property>
 	</bean>
 
 	<!---Entidad Curso-->
 	<bean id="estilo1" class="domain.Curso">
   		<property name="titulo" value="titulocurso1" />
   		<property name="estilo" ref="estilo1" />
-  		<property name="nivel" ref="AVANZADO" />
+  		<property name="nivel">
+			<value>AVANZADO</value>
+		</property>
   		<property name="fechaInicio" value="2025-02-27" />
   		<property name="fechaFin" value="2025-03-27" />
   		<property name="hora" value="12:15" />
+  		<property name="RegisteredFor">
+		<list>
+			<ref bean="RegisteredFor1" />
+			<ref bean="RegisteredFor2" />
+		</list>
+  		</property>
 	</bean>
 
 
