@@ -1,7 +1,7 @@
 
 package domain;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -13,28 +13,27 @@ import javax.persistence.OneToOne;
 @Access(AccessType.PROPERTY)
 public class Alumno extends Actor {
 
-	//Relaciones
+	private Collection<Comentario>		comentarios;
 
-	@OneToMany(mappedBy = "autor")
-	private List<Comentario>	comentarios;
+	private Collection<registeredFor>	registeredFor;
 
-	@OneToMany(mappedBy = "alumno")
-	private List<registeredFor>	registeredFor;
-
-	@OneToOne(optional = true)
-	private TarjetaCredito		tarjetaCredito;
+	private TarjetaCredito				tarjetaCredito;
 
 
 	//Getters y Setters
 
-	public List<Comentario> getComentarios() {
+	@Override
+	@OneToMany
+	public Collection<Comentario> getComentarios() {
 		return this.comentarios;
 	}
 
-	public List<registeredFor> getRegisteredFor() {
+	@OneToMany
+	public Collection<registeredFor> getRegisteredFor() {
 		return this.registeredFor;
 	}
 
+	@OneToOne(optional = true)
 	public TarjetaCredito getTarjetaCredito() {
 		return this.tarjetaCredito;
 	}
@@ -43,5 +42,12 @@ public class Alumno extends Actor {
 		this.tarjetaCredito = tarjetaCredito;
 	}
 
-	//Los Setters pueden generar inconsistencia
+	@Override
+	public void setComentarios(final Collection<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public void setRegisteredFor(final Collection<registeredFor> registeredFor) {
+		this.registeredFor = registeredFor;
+	}
 }

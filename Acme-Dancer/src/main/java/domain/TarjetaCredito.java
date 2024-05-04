@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class TarjetaCredito {
+public class TarjetaCredito extends DomainEntity {
 
 	@NotBlank
 	private String	titular;
@@ -33,7 +33,6 @@ public class TarjetaCredito {
 	@Pattern(regexp = "[0-9]{3}")
 	private String	codigoCVV;
 
-	@OneToOne(optional = true)
 	private Alumno	alumno;
 
 
@@ -85,6 +84,7 @@ public class TarjetaCredito {
 		this.codigoCVV = codigoCVV;
 	}
 
+	@OneToOne(optional = true)
 	public Alumno getAlumno() {
 		return this.alumno;
 	}

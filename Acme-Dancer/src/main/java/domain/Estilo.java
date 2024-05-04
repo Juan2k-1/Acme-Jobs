@@ -2,11 +2,11 @@
 package domain;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -20,17 +20,14 @@ public class Estilo extends DomainEntity {
 	@Column(unique = true)
 	@NotBlank
 	private String				nombre;
+
 	private String				descripcion;
-	@NotBlank
-	@URL
+
 	private Collection<String>	imagen;
-	@NotBlank
-	@URL
+
 	private Collection<String>	video;
 
-	//relaciones
-	@OneToMany(mappedBy = "tieneCE")
-	private List<Curso>			cursos;
+	private Collection<Curso>	cursos;
 
 
 	//Getter and setters
@@ -50,6 +47,9 @@ public class Estilo extends DomainEntity {
 		this.descripcion = descripcion;
 	}
 
+	@NotBlank
+	@URL
+	@ElementCollection
 	public Collection<String> getImagen() {
 		return this.imagen;
 	}
@@ -58,6 +58,9 @@ public class Estilo extends DomainEntity {
 		this.imagen = imagen;
 	}
 
+	@NotBlank
+	@URL
+	@ElementCollection
 	public Collection<String> getVideo() {
 		return this.video;
 	}
@@ -66,11 +69,12 @@ public class Estilo extends DomainEntity {
 		this.video = video;
 	}
 
-	public List<Curso> getCursos() {
+	@OneToMany(mappedBy = "estilo")
+	public Collection<Curso> getCursos() {
 		return this.cursos;
 	}
 
-	public void setCursos(final List<Curso> cursos) {
+	public void setCursos(final Collection<Curso> cursos) {
 		this.cursos = cursos;
 	}
 

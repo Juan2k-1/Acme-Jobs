@@ -8,20 +8,17 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class registeredFor extends DomainEntity{
+public class registeredFor extends DomainEntity {
 
-	@ManyToOne
-	@JoinColumn(name = "alumno_id") //Esta anotación se utiliza para especificar la columna de la tabla relacionada que se utilizará para unir las dos entidades.
 	private Alumno	alumno;
 
-	@ManyToOne
-	@JoinColumn(name = "curso_id")
 	private Curso	curso;
 
 	@Past
@@ -32,7 +29,7 @@ public class registeredFor extends DomainEntity{
 
 
 	//Getters y Setters
-
+	@ManyToOne
 	public Alumno getAlumno() {
 		return this.alumno;
 	}
@@ -41,6 +38,7 @@ public class registeredFor extends DomainEntity{
 		this.alumno = alumno;
 	}
 
+	@ManyToOne
 	public Curso getCurso() {
 		return this.curso;
 	}
@@ -49,6 +47,7 @@ public class registeredFor extends DomainEntity{
 		this.curso = curso;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomento() {
 		return this.momento;
 	}

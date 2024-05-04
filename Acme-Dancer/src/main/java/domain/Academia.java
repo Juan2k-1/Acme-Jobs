@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Access;
@@ -15,15 +16,11 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Academia extends Actor {
 
 	@NotBlank
-	private String			nombreComercial;
+	private String					nombreComercial;
 
-	//Relaciones
+	private Collection<Curso>		cursos;
 
-	@OneToMany(mappedBy = "academia")
-	private List<Curso>		cursos;
-
-	@OneToMany(mappedBy = "academia")
-	private List<Tutorial>	tutoriales;
+	private Collection<Tutorial>	tutoriales;
 
 
 	//Getters y Setters
@@ -36,7 +33,8 @@ public class Academia extends Actor {
 		this.nombreComercial = nombreComercial;
 	}
 
-	public List<Curso> getCursos() {
+	@OneToMany(mappedBy = "academia")
+	public Collection<Curso> getCursos() {
 		return this.cursos;
 	}
 
@@ -44,7 +42,8 @@ public class Academia extends Actor {
 		this.cursos = cursos;
 	}
 
-	public List<Tutorial> getTutoriales() {
+	@OneToMany(mappedBy = "academia")
+	public Collection<Tutorial> getTutoriales() {
 		return this.tutoriales;
 	}
 

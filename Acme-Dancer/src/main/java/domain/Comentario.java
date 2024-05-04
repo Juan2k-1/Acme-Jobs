@@ -7,6 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -16,7 +18,6 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class Comentario extends DomainEntity {
 
-	@ManyToOne(optional = true)
 	private Actor	autor;
 
 	@Past
@@ -28,8 +29,8 @@ public class Comentario extends DomainEntity {
 
 
 	//Getters y Setters
-
-	public Actor getActor() {
+	@ManyToOne(optional = true)
+	public Actor getAutor() {
 		return this.autor;
 	}
 
@@ -37,6 +38,7 @@ public class Comentario extends DomainEntity {
 		this.autor = autor;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomento() {
 		return this.momento;
 	}

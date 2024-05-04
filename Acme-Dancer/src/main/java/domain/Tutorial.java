@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -21,12 +22,8 @@ public class Tutorial extends DomainEntity {
 	@NotBlank
 	private String				descripcion;
 
-	@URL
 	private Collection<String>	video;
 
-	//Relaciones
-
-	@ManyToOne(optional = false)
 	private Academia			academia;
 
 
@@ -48,6 +45,8 @@ public class Tutorial extends DomainEntity {
 		this.descripcion = descripcion;
 	}
 
+	@URL
+	@ElementCollection
 	public Collection<String> getVideo() {
 		return this.video;
 	}
@@ -56,6 +55,7 @@ public class Tutorial extends DomainEntity {
 		this.video = video;
 	}
 
+	@ManyToOne(optional = false)
 	public Academia getAcademia() {
 		return this.academia;
 	}

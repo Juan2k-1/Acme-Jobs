@@ -54,7 +54,7 @@
 	<!-- Other domain beans come here -->
 	<bean id="actor1" class="domain.Alumno">
 		<property name="nombre" value="Carlos" />
-		<property name="apellido" value="Cano" />
+		<property name="apellidos" value="Cano" />
 		<property name="email" value="carlos@gmail.com" />
 		<property name="telefono" value="123456789" />
 		<property name="direccion">
@@ -66,19 +66,19 @@
 	</bean>
 	<bean id="actor2" class="domain.Administrador">
 		<property name="nombre" value="Juan_Alberto" />
-		<property name="apellido" value="Dominguez" />
+		<property name="apellidos" value="Dominguez" />
 		<property name="email" value="juan@gmail.com" />
 		<property name="telefono" value="987654321" />
 		<property name="direccion">
 			<bean class="domain.Direccion">
 				<property name="direccion" value="Calle Puerto 12" />
-				<property name="codigoPostal" value="" />
+				<property name="codigoPostal" value="10000" />
 			</bean>
 		</property>
 	</bean>
 	<bean id="actor3" class="domain.Academia">
 		<property name="nombre" value="Nacho" />
-		<property name="apellido" value="Velazquez" />
+		<property name="apellidos" value="Velazquez" />
 		<property name="nombreComercial" value="Huelva_Centro" />
 		<property name="email" value="huelva_centro@gmail.com" />
 		<property name="telefono" value="123498765" />
@@ -101,13 +101,13 @@
 		<property name="alumno">
 			<bean class="domain.Alumno">
 				<property name="nombre" value="Juan_Alberto" />
-				<property name="apellido" value="Dominguez" />
+				<property name="apellidos" value="Dominguez" />
 				<property name="email" value="juan@gmail.com" />
 				<property name="telefono" value="987654321" />
 				<property name="direccion">
 					<bean class="domain.Direccion">
 						<property name="direccion" value="Calle Puerto 12" />
-						<property name="codigoPostal" value="" />
+						<property name="codigoPostal" value="21004" />
 					</bean>
 				</property>
 			</bean>
@@ -123,6 +123,34 @@
 		<property name="codigoCVV" value="321" />
 	</bean>
 
+	<!---Entidad RegisteredFor -->
+	<bean id="registeredFor1" class="domain.registeredFor">
+		<property name="alumno" ref="alumno1" />
+		<property name="curso" ref="curso1" />
+		<property name="momento" value="04/04/2024 18:00" />
+		<property name="estado">
+			<value>ACEPTADO</value>
+		</property>
+	</bean>
+
+	<bean id="registeredFor2" class="domain.registeredFor">
+		<property name="alumno" ref="alumno1" />
+		<property name="curso" ref="curso2" />
+		<property name="momento" value="12/04/2024 17:44" />
+		<property name="estado">
+			<value>PENDIENTE</value>
+		</property>
+	</bean>
+
+	<bean id="registeredFor3" class="domain.registeredFor">
+		<property name="alumno" ref="alumno1" />
+		<property name="curso" ref="curso3" />
+		<property name="momento" value="01/12/2024 14:30" />
+		<property name="estado">
+			<value>RECHAZADO</value>
+		</property>
+	</bean>
+
 	<!---Entidad Alumno -->
 	<bean id="alumno1" parent="actor1" class="domain.Alumno">
 		<property name="comentarios">
@@ -134,98 +162,103 @@
 		<property name="registeredFor">
 			<list>
 				<ref bean="registeredFor1" />
-				<ref bean="registeredFor2" />
-				<ref bean="registeredFor3" />
 			</list>
 		</property>
+	</bean>
+
+	<!-- Entidad academia -->
+	<bean id="academia1" parent="actor3" class="domain.Academia">
+		<property name="nombreComercial" value="Huelva_Centro" />
+		<property name="cursos">
+			<list>
+				<ref bean="curso1" />
+			</list>
+		</property>
+		<property name="tutoriales">
+			<list>
+				<ref bean="tutorial1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Entidad tutorial -->
+	<bean id="tutorial1" class="domain.Tutorial">
+		<property name="titulo" value="tutorial1" />
+		<property name="descripcion" value="tutorial de ejemplo" />
+		<property name="video">
+			<list>
+				<value>"video1"</value>
+			</list>
+		</property>
+		<property name="academia" ref="academia1" />
 	</bean>
 
 	<!---Entidad Comentario -->
 	<bean id="comentario1" class="domain.Comentario">
 		<property name="autor" ref="alumno1" />
-		<property name="momento" value="2024-04-27T12:34:56.789Z" />
+		<property name="momento" value="27/04/2024 12:34" />
 		<property name="descripcion"
 			value="Este es un comentario de prueba para el Alumno1." />
 	</bean>
 
 	<bean id="comentario2" class="domain.Comentario">
 		<property name="autor" ref="alumno1" />
-		<property name="momento" value="2024-03-27T12:34:56.789Z" />
+		<property name="momento" value="28/04/2024 10:05" />
 		<property name="descripcion"
 			value="Este es un segundo comentario del Alumno1." />
 	</bean>
 
-	<!---Entidad RegisteredFor -->
-	<bean id="registeredFor1" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
-		<property name="curso" ref="curso1" />
-		<property name="momento" value="2024-04-27T10:00:00.000Z" />
-		<property name="estado">
-			<value>ACEPTADO</value>
-		</property>
-	</bean>
-
-	<bean id="registeredFor2" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
-		<property name="curso" ref="curso2" />
-		<property name="momento" value="2024-03-27T7:39:00.000Z" />
-		<property name="estado">
-			<value>PENDIENTE</value>
-		</property>
-	</bean>
-
-	<bean id="registeredFor3" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
-		<property name="curso" ref="curso3" />
-		<property name="momento" value="2023-02-27T7:39:00.000Z" />
-		<property name="estado">
-			<value>RECHAZADO</value>
-		</property>
-	</bean>
-
 	<!---Entidad Estilo -->
 	<bean id="estilo1" class="domain.Estilo">
-  		<property name="nombre" value="Break Dance" />
-  		<property name="descripcion" value="baile callejero" />
-  		<property name="imagen">
-		<list>
-			<ref bean="imagen1" />
-			<ref bean="imagen2" />
-		</list>
-  		</property>
-  		<property name="video">
-		<list>
-			<ref bean="video1" />
-			<ref bean="video2" />
-		</list>
-  		</property>
-  		 <property name="Cursos">
-		<list>
-			<ref bean="Curso1" />
-			<ref bean="Curso2" />
-		</list>
-  		</property>
-
+		<property name="nombre" value="Break Dance" />
+		<property name="descripcion" value="baile callejero" />
+		<property name="imagen">
+			<list>
+				<value>"imagen1"</value>
+				<value>"imagen2"</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>"video1"</value>
+				<value>"video2"</value>
+			</list>
+		</property>
+		<property name="Cursos">
+			<list>
+				<ref bean="curso1" />
+			</list>
+		</property>
 	</bean>
 
 
 	<!---Entidad Curso -->
-	<bean id="estilo1" class="domain.Curso">
-  		<property name="titulo" value="titulocurso1" />
-  		<property name="estilo" ref="estilo1" />
-  		<property name="nivel">
+	<bean id="curso1" class="domain.Curso">
+		<property name="titulo" value="titulocurso1" />
+		<property name="estilo" ref="estilo1" />
+		<property name="nivel">
 			<value>AVANZADO</value>
 		</property>
-  		<property name="fechaInicio" value="2025-02-27" />
-  		<property name="fechaFin" value="2025-03-27" />
-  		<property name="hora" value="12:15" />
-  		<property name="RegisteredFor">
-		<list>
-			<ref bean="RegisteredFor1" />
-			<ref bean="RegisteredFor2" />
-		</list>
-  		</property>
+		<property name="academia" ref="academia1" />
+		<property name="fechaInicio" value="2025/02/27" />
+		<property name="fechaFin" value="2025/03/27" />
+		<property name="hora" value="12:15:00" />
+		<property name="registeredFor">
+			<list>
+				<ref bean="registeredFor1" />
+			</list>
+		</property>
 	</bean>
 
-
+	<!--- <bean id="curso2" class="domain.Curso"> <property name="titulo" value="titulocurso2" 
+		/> <property name="estilo" ref="estilo1" /> <property name="nivel"> <value>PROFESIONAL</value> 
+		</property> <property name="fechaInicio" value="2025/02/27" /> <property 
+		name="fechaFin" value="2025/03/27" /> <property name="hora" value="12:15:00" 
+		/> <property name="registeredFor"> <list> <ref bean="registeredFor2" /> </list> 
+		</property> </bean> <bean id="curso3" class="domain.Curso"> <property name="titulo" 
+		value="titulocurso3" /> <property name="estilo" ref="estilo1" /> <property 
+		name="nivel"> <value>PROFESIONAL</value> </property> <property name="fechaInicio" 
+		value="2025/02/27" /> <property name="fechaFin" value="2025/03/27" /> <property 
+		name="hora" value="12:15:00" /> <property name="registeredFor"> <list> <ref 
+		bean="registeredFor3" /> </list> </property> </bean> -->
 </beans>

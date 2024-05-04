@@ -1,7 +1,7 @@
 
 package domain;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -21,27 +21,24 @@ import org.hibernate.validator.constraints.NotBlank;
 public abstract class Actor extends DomainEntity {
 
 	@NotBlank
-	private String				nombre;
+	private String					nombre;
 
 	@NotBlank
-	private String				apellidos;
+	private String					apellidos;
 
 	@Email
-	private String				email;
+	private String					email;
 
 	@Pattern(regexp = "[0-9]{9}")
-	private String				telefono;
+	private String					telefono;
 
-	private Direccion			direccion;
+	private Direccion				direccion;
 
-	@OneToMany(mappedBy = "Autor")
-	private List<Comentario>	comentarios;
+	private Collection<Comentario>	comentarios;
 
-	@ManyToMany
-	private List<Actor>			publicadores;
+	private Collection<Actor>		publicadores;
 
-	@ManyToMany
-	private List<Actor>			subscriptores;
+	private Collection<Actor>		subscriptores;
 
 
 	public String getNombre() {
@@ -84,27 +81,30 @@ public abstract class Actor extends DomainEntity {
 		this.direccion = direccion;
 	}
 
-	public List<Comentario> getComentarios() {
+	@OneToMany
+	public Collection<Comentario> getComentarios() {
 		return this.comentarios;
 	}
 
-	public void setComentarios(final List<Comentario> comentarios) {
+	public void setComentarios(final Collection<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 
-	public List<Actor> getPublicadores() {
+	@ManyToMany
+	public Collection<Actor> getPublicadores() {
 		return this.publicadores;
 	}
 
-	public void setPublicadores(final List<Actor> publicadores) {
+	public void setPublicadores(final Collection<Actor> publicadores) {
 		this.publicadores = publicadores;
 	}
 
-	public List<Actor> getSubscriptores() {
+	@ManyToMany
+	public Collection<Actor> getSubscriptores() {
 		return this.subscriptores;
 	}
 
-	public void setSubscriptores(final List<Actor> subscriptores) {
+	public void setSubscriptores(final Collection<Actor> subscriptores) {
 		this.subscriptores = subscriptores;
 	}
 }
