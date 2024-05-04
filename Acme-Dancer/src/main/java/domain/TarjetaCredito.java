@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -31,6 +32,9 @@ public class TarjetaCredito {
 
 	@Pattern(regexp = "[0-9]{3}")
 	private String	codigoCVV;
+
+	@OneToOne(optional = true)
+	private Alumno	alumno;
 
 
 	public String getTitular() {
@@ -79,5 +83,13 @@ public class TarjetaCredito {
 
 	public void setCodigoCVV(final String codigoCVV) {
 		this.codigoCVV = codigoCVV;
+	}
+
+	public Alumno getAlumno() {
+		return this.alumno;
+	}
+
+	public void setAlumno(final Alumno alumno) {
+		this.alumno = alumno;
 	}
 }

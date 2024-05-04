@@ -3,22 +3,18 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Past;
 
 @Entity
-public class registeredFor {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long	id;
+@Access(AccessType.PROPERTY)
+public class registeredFor extends DomainEntity{
 
 	@ManyToOne
 	@JoinColumn(name = "alumno_id") //Esta anotación se utiliza para especificar la columna de la tabla relacionada que se utilizará para unir las dos entidades.

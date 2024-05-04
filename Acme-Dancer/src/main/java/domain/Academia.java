@@ -19,10 +19,10 @@ public class Academia extends Actor {
 
 	//Relaciones
 
-	@OneToMany(mappedBy = "CA")
+	@OneToMany(mappedBy = "academia")
 	private List<Curso>		cursos;
 
-	@OneToMany(mappedBy = "TA")
+	@OneToMany(mappedBy = "academia")
 	private List<Tutorial>	tutoriales;
 
 
@@ -34,5 +34,21 @@ public class Academia extends Actor {
 
 	public void setNombreComercial(final String nombreComercial) {
 		this.nombreComercial = nombreComercial;
+	}
+
+	public List<Curso> getCursos() {
+		return this.cursos;
+	}
+
+	public void setCursos(final List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
+	public List<Tutorial> getTutoriales() {
+		return this.tutoriales;
+	}
+
+	public void setTutoriales(final List<Tutorial> tutoriales) {
+		this.tutoriales = tutoriales;
 	}
 }
