@@ -1,8 +1,22 @@
 #./src/main/resources/Entities.map
-#Fri Apr 26 15:12:33 CEST 2024
-shout3=12
-shout2=11
-shout1=10
-userAccount3=9
-userAccount2=8
-userAccount1=7
+#Thu May 09 20:28:18 CEST 2024
+comentario2=36
+academia1=33
+comentario1=35
+tarjeta2=29
+tarjeta1=28
+estilo1=37
+actor3=26
+actor2=25
+actor1=24
+registeredFor3=32
+userAccount3=23
+registeredFor2=31
+curso3=40
+userAccount2=22
+registeredFor1=30
+curso2=39
+userAccount1=21
+curso1=38
+tutorial1=34
+alumno1=27

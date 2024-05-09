@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -47,8 +46,6 @@ public class Estilo extends DomainEntity {
 		this.descripcion = descripcion;
 	}
 
-	@NotBlank
-	@URL
 	@ElementCollection
 	public Collection<String> getImagen() {
 		return this.imagen;
@@ -58,8 +55,6 @@ public class Estilo extends DomainEntity {
 		this.imagen = imagen;
 	}
 
-	@NotBlank
-	@URL
 	@ElementCollection
 	public Collection<String> getVideo() {
 		return this.video;

@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -45,7 +44,6 @@ public class Tutorial extends DomainEntity {
 		this.descripcion = descripcion;
 	}
 
-	@URL
 	@ElementCollection
 	public Collection<String> getVideo() {
 		return this.video;

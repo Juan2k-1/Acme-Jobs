@@ -1,23 +1,21 @@
 
 package domain;
 
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -32,7 +30,7 @@ public class Curso extends DomainEntity {
 
 	private Date						fechaFin;
 
-	private Time						hora;
+	private String						hora;
 
 	private Estilo						estilo;
 
@@ -59,6 +57,7 @@ public class Curso extends DomainEntity {
 		this.estilo = estilo;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public Nivel getNivel() {
 		return this.nivel;
 	}
@@ -67,7 +66,7 @@ public class Curso extends DomainEntity {
 		this.nivel = nivel;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
@@ -76,7 +75,7 @@ public class Curso extends DomainEntity {
 		this.fechaInicio = fechaInicio;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	public Date getFechaFin() {
 		return this.fechaFin;
 	}
@@ -85,19 +84,13 @@ public class Curso extends DomainEntity {
 		this.fechaFin = fechaFin;
 	}
 
-	public Time getHora() {
+	@DateTimeFormat(pattern = "hh:mm:ss")
+	public String getHora() {
 		return this.hora;
 	}
 
-	public void setHora(final String horaString) {
-		if (horaString != null && !horaString.isEmpty()) {
-			final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-			try {
-				this.hora = new Time(dateFormat.parse(horaString).getTime());
-			} catch (final ParseException e) {
-				Logger.getLogger(Curso.class.getName() + e.getCause());
-			}
-		}
+	public void setHora(final String hora) {
+		this.hora = hora;
 	}
 
 	@ManyToOne(optional = false)

@@ -56,6 +56,7 @@ public class registeredFor extends DomainEntity {
 		this.momento = momento;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public Estado getEstado() {
 		return this.estado;
 	}
