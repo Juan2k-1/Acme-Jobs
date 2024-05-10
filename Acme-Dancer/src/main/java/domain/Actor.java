@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -27,9 +28,11 @@ public abstract class Actor extends DomainEntity {
 	private String					apellidos;
 
 	@Email
+	@Column(unique = true)
 	private String					email;
 
 	@Pattern(regexp = "[0-9]{9}")
+	@Column(unique = true)
 	private String					telefono;
 
 	private Direccion				direccion;

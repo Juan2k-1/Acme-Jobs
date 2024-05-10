@@ -63,6 +63,19 @@
 				<property name="codigoPostal" value="12345" />
 			</bean>
 		</property>
+		<property name="comentarios">
+			<list>
+				<ref bean="comentario1" />
+				<ref bean="comentario2" />
+			</list>
+		</property>
+		<property name="tarjetaCredito" ref="tarjeta1" />
+		<property name="registeredFor">
+			<list>
+				<ref bean="registeredFor1" />
+				<ref bean="registeredFor2" />
+			</list>
+		</property>
 	</bean>
 	<bean id="actor2" class="domain.Administrador">
 		<property name="nombre" value="Juan_Alberto" />
@@ -90,7 +103,7 @@
 		</property>
 	</bean>
 	
-	<!---Entidad Alumno -->
+	<!---Entidad Alumno 
 	<bean id="alumno1" parent="actor1" class="domain.Alumno">
 		<property name="comentarios">
 			<list>
@@ -104,22 +117,21 @@
 			</list>
 		</property>
 	</bean>
+	-->
 
 	<!-- Entidad TarjetaCredito -->
 	<bean id="tarjeta1" class="domain.TarjetaCredito">
-		<property name="titular" value="Juan Alberto Dominguez" />
+		<property name="titular" value="Carlos Cano" />
 		<property name="marca" value="Visa" />
 		<property name="numero" value="4111111111111111" />
 		<property name="mes" value="03" />
 		<property name="año" value="2025" />
 		<property name="codigoCVV" value="123" />
-		<property name="alumno" ref="alumno1" />
-			
-		
+		<property name="alumno" ref="actor1" />		
 	</bean>
 
 	<bean id="tarjeta2" class="domain.TarjetaCredito">
-		<property name="titular" value="Juan Alberto Dominguez" />
+		<property name="titular" value="Mairena Domínguez" />
 		<property name="marca" value="MasterCard" />
 		<property name="numero" value="5500000000000004" />
 		<property name="mes" value="04" />
@@ -129,7 +141,7 @@
 
 	<!---Entidad RegisteredFor -->
 	<bean id="registeredFor1" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
+		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso1" />
 		<property name="momento" value="04/04/2023 18:00" />
 		<property name="estado">
@@ -138,7 +150,7 @@
 	</bean>
 
 	<bean id="registeredFor2" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
+		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso2" />
 		<property name="momento" value="12/04/2023 17:44" />
 		<property name="estado">
@@ -147,7 +159,7 @@
 	</bean>
 
 	<bean id="registeredFor3" class="domain.registeredFor">
-		<property name="alumno" ref="alumno1" />
+		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso3" />
 		<property name="momento" value="01/03/2023 14:30" />
 		<property name="estado">
@@ -155,9 +167,7 @@
 		</property>
 	</bean>
 
-	
-
-	<!-- Entidad academia -->
+	<!-- Entidad academia 
 	<bean id="academia1" parent="actor3" class="domain.Academia">
 		<property name="nombreComercial" value="Huelva_Centro" />
 		<property name="cursos">
@@ -171,6 +181,7 @@
 			</list>
 		</property>
 	</bean>
+	-->
 
 	<!-- Entidad tutorial -->
 	<bean id="tutorial1" class="domain.Tutorial">
@@ -178,22 +189,22 @@
 		<property name="descripcion" value="tutorial de ejemplo" />
 		<property name="video">
 			<list>
-				<value>"video1"</value>
+				<value>video1</value>
 			</list>
 		</property>
-		<property name="academia" ref="academia1" />
+		<property name="academia" ref="actor3" />
 	</bean>
 
 	<!---Entidad Comentario -->
 	<bean id="comentario1" class="domain.Comentario">
-		<property name="autor" ref="alumno1" />
+		<property name="autor" ref="actor1" />
 		<property name="momento" value="27/04/2022 12:34" />
 		<property name="descripcion"
 			value="Este es un comentario de prueba para el Alumno1." />
 	</bean>
 
 	<bean id="comentario2" class="domain.Comentario">
-		<property name="autor" ref="alumno1" />
+		<property name="autor" ref="actor1" />
 		<property name="momento" value="28/04/2022 10:05" />
 		<property name="descripcion"
 			value="Este es un segundo comentario del Alumno1." />
@@ -205,17 +216,17 @@
 		<property name="descripcion" value="baile callejero" />
 		<property name="imagen">
 			<list>
-				<value>"imagen1"</value>
-				<value>"imagen2"</value>
+				<value>imagen1</value>
+				<value>imagen2</value>
 			</list>
 		</property>
 		<property name="video">
 			<list>
-				<value>"video1"</value>
-				<value>"video2"</value>
+				<value>video1</value>
+				<value>video2</value>
 			</list>
 		</property>
-		<property name="Cursos">
+		<property name="cursos">
 			<list>
 				<ref bean="curso1" />
 			</list>
@@ -228,7 +239,7 @@
 		<property name="titulo" value="titulocurso1" />
 		<property name="estilo" ref="estilo1" />
 		<property name="nivel" value="PRINCIPIANTE" />
-		<property name="academia" ref="academia1" />
+		<property name="academia" ref="actor3" />
 		<property name="fechaInicio" value="27/02/2025" />
 		<property name="fechaFin" value="27/03/2025" />
 		<property name="hora" value="12:15:00" />
@@ -243,7 +254,7 @@
 		<property name="titulo" value="titulocurso2" />
 		<property name="estilo" ref="estilo1" />
 		<property name="nivel" value="INTERMEDIO" />
-		<property name="academia" ref="academia1" />
+		<property name="academia" ref="actor3" />
 		<property name="fechaInicio" value="27/02/2025" />
 		<property name="fechaFin" value="27/03/2025" />
 		<property name="hora" value="12:15:00" />
@@ -257,7 +268,7 @@
 		<property name="titulo" value="titulocurso3" />
 		<property name="estilo" ref="estilo1" />
 		<property name="nivel" value="PROFESIONAL" />
-		<property name="academia" ref="academia1" />
+		<property name="academia" ref="actor3" />
 		<property name="fechaInicio" value="27/02/2025" />
 		<property name="fechaFin" value="27/03/2025" />
 		<property name="hora" value="12:15:00" />

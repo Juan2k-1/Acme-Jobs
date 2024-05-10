@@ -24,7 +24,6 @@ public class registeredFor extends DomainEntity {
 	@Past
 	private Date	momento;
 
-	@Enumerated(EnumType.STRING)
 	private Estado	estado;
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -16,6 +17,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Academia extends Actor {
 
 	@NotBlank
+	@Column(unique = true)
 	private String					nombreComercial;
 
 	private Collection<Curso>		cursos;

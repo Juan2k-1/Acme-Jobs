@@ -3,6 +3,7 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
@@ -22,6 +23,7 @@ public class TarjetaCredito extends DomainEntity {
 	private String	marca;
 
 	@CreditCardNumber
+	@Column(unique = true)
 	private String	numero;
 
 	@Range(min = 1, max = 12)
