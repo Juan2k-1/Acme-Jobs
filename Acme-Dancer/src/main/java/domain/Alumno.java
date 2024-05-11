@@ -13,14 +13,14 @@ import javax.persistence.OneToOne;
 @Access(AccessType.PROPERTY)
 public class Alumno extends Actor {
 
-	private Collection<registeredFor>	registeredFor;
+	private Collection<RegisteredFor>	registeredFor;
 
 	private TarjetaCredito				tarjetaCredito;
 
 
 	//Getters y Setters
 	@OneToMany
-	public Collection<registeredFor> getRegisteredFor() {
+	public Collection<RegisteredFor> getRegisteredFor() {
 		return this.registeredFor;
 	}
 
@@ -33,7 +33,7 @@ public class Alumno extends Actor {
 		this.tarjetaCredito = tarjetaCredito;
 	}
 
-	public void setRegisteredFor(final Collection<registeredFor> registeredFor) {
+	public void setRegisteredFor(final Collection<RegisteredFor> registeredFor) {
 		this.registeredFor = registeredFor;
 	}
 }

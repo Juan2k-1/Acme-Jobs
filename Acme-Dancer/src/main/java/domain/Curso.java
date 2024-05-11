@@ -36,7 +36,7 @@ public class Curso extends DomainEntity {
 
 	private Academia					academia;
 
-	private Collection<registeredFor>	registeredFor;
+	private Collection<RegisteredFor>	registeredFor;
 
 
 	//getters and setters
@@ -103,11 +103,11 @@ public class Curso extends DomainEntity {
 	}
 
 	@OneToMany(mappedBy = "curso")
-	public Collection<registeredFor> getRegisteredFor() {
+	public Collection<RegisteredFor> getRegisteredFor() {
 		return this.registeredFor;
 	}
 
-	public void setRegisteredFor(final Collection<registeredFor> registeredFor) {
+	public void setRegisteredFor(final Collection<RegisteredFor> registeredFor) {
 		this.registeredFor = registeredFor;
 	}
 

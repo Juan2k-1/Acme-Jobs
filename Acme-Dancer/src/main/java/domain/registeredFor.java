@@ -15,7 +15,7 @@ import javax.validation.constraints.Past;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class registeredFor extends DomainEntity {
+public class RegisteredFor extends DomainEntity {
 
 	private Alumno	alumno;
 
