@@ -30,8 +30,8 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/Acme-Dancer?allowPublicKeyRetrieval=true&amp;useSSL=false" />
-		<property name="user" value="acme-user" />
-		<property name="password" value="ACME-Us3r-P@ssw0rd" />
+		<property name="user" value="acme-admin" />
+		<property name="password" value="ACME-@dm$n-6874" />
 	</bean>
 
 	<!-- JPA -->

@@ -140,7 +140,7 @@
 	</bean>
 
 	<!---Entidad RegisteredFor -->
-	<bean id="registeredFor1" class="domain.registeredFor">
+	<bean id="registeredFor1" class="domain.RegisteredFor">
 		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso1" />
 		<property name="momento" value="04/04/2023 18:00" />
@@ -149,7 +149,7 @@
 		</property>
 	</bean>
 
-	<bean id="registeredFor2" class="domain.registeredFor">
+	<bean id="registeredFor2" class="domain.RegisteredFor">
 		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso2" />
 		<property name="momento" value="12/04/2023 17:44" />
@@ -158,7 +158,7 @@
 		</property>
 	</bean>
 
-	<bean id="registeredFor3" class="domain.registeredFor">
+	<bean id="registeredFor3" class="domain.RegisteredFor">
 		<property name="alumno" ref="actor1" />
 		<property name="curso" ref="curso3" />
 		<property name="momento" value="01/03/2023 14:30" />

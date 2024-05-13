@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import domain.Academia;
 import domain.Tutorial;
 import repositories.TutorialRepository;
 
@@ -55,12 +54,12 @@ public class TutorialService {
 		return result;
 	}
 
-	public Tutorial findByAcademia(final Academia academia) {
-		Assert.isTrue(academia != null);
+	public Tutorial findByTitle(final String titulo) {
+		Assert.isTrue(titulo != "");
 
 		Tutorial result;
 
-		result = this.tutorialRepository.findByAcademia(academia);
+		result = this.tutorialRepository.findByTitle(titulo);
 		Assert.notNull(result);
 
 		return result;

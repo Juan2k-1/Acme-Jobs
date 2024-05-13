@@ -54,4 +54,14 @@ public class AdministradorService {
 		return result;
 	}
 
+	public Administrador findByName(final String nombre) {
+		Assert.isTrue(nombre != "");
+
+		Administrador result;
+
+		result = this.administradorRepository.findByName(nombre);
+		Assert.notNull(result);
+
+		return result;
+	}
 }

@@ -10,7 +10,9 @@ import domain.Administrador;
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Integer> {
 
-	@Query("select a from Academia a where a.id = ?1")
+	@Query("select a from Administrador a where a.id = ?1")
 	Administrador findOne(int id);
 
+	@Query("SELECT a FROM Administrador a WHERE a.nombre LIKE LOWER(CONCAT('%', ?1, '%'))")
+	Administrador findByName(String nombre);
 }
