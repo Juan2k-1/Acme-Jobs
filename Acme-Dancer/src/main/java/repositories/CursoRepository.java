@@ -13,6 +13,6 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
 	@Query("select c from Curso c where c.id = ?1")
 	Curso findOne(int id);
 
-	@Query("select c from Curso c where c.titulo like '%?1%'")
+	@Query("select c from Curso c where c.titulo like LOWER(CONCAT('%', ?1, '%'))")
 	Curso findByName(String titulo);
 }

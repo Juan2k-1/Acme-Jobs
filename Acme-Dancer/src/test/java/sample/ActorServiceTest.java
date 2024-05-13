@@ -1,7 +1,6 @@
 
 package sample;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -46,10 +45,7 @@ public class ActorServiceTest extends AbstractTest {
 
 		final Actor saved = this.actorService.save(actor);
 
-		Collection<Actor> actores = new ArrayList<Actor>();
-		actores.add(saved);
-
-		actores = this.actorService.findAll();
+		final Collection<Actor> actores = this.actorService.findAll();
 		Assert.isTrue(actores.contains(saved));
 
 		final Actor actor2 = this.actorService.findByName("Carlos");
