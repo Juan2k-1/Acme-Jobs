@@ -15,4 +15,7 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
 	@Query("select c from Curso c where c.titulo like LOWER(CONCAT('%', ?1, '%'))")
 	Curso findByName(String titulo);
+
+	@Query("select c from Curso c where c.estilo like LOWER(CONCAT('%', ?1, '%'))")
+	Curso findByEstilo(String estilo);
 }

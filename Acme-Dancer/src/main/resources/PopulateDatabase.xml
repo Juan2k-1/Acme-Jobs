@@ -229,10 +229,211 @@
 		<property name="cursos">
 			<list>
 				<ref bean="curso1" />
+				<ref bean="curso2" />
+				<ref bean="curso3" />
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="salsa" class="domain.Estilo">
+		<property name="nombre" value="Salsa" />
+		<property name="descripcion" value="baile salsa" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
 
+		</property>
+	</bean>
+	
+	<bean id="mambo" class="domain.Estilo">
+		<property name="nombre" value="Mambo" />
+		<property name="descripcion" value="baile mambo" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="bachata" class="domain.Estilo">
+		<property name="nombre" value="Bachata" />
+		<property name="descripcion" value="baile bachata" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="pachanga" class="domain.Estilo">
+		<property name="nombre" value="Pachanga" />
+		<property name="descripcion" value="baile pachanga" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+
+	<bean id="pasodoble" class="domain.Estilo">
+		<property name="nombre" value="Pasodoble" />
+		<property name="descripcion" value="baile pasodoble" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="sevillanas" class="domain.Estilo">
+		<property name="nombre" value="Sevillanas" />
+		<property name="descripcion" value="baile sevillanas" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="tango" class="domain.Estilo">
+		<property name="nombre" value="Tango" />
+		<property name="descripcion" value="baile callejero" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="chachachá" class="domain.Estilo">
+		<property name="nombre" value="Chachachá" />
+		<property name="descripcion" value="baile chachachá" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="rumba" class="domain.Estilo">
+		<property name="nombre" value="Rumba" />
+		<property name="descripcion" value="baile rumba" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+
+		</property>
+	</bean>
+	
+	<bean id="kizomba" class="domain.Estilo">
+		<property name="nombre" value="Kizomba" />
+		<property name="descripcion" value="baile kizomba" />
+		<property name="imagen">
+			<list>
+				<value>imagen1</value>
+				<value>imagen2</value>
+			</list>
+		</property>
+		<property name="video">
+			<list>
+				<value>video1</value>
+				<value>video2</value>
+			</list>
+		</property>
+		<property name="cursos">
+		</property>
+	</bean>
+	
 
 	<!---Entidad Curso -->
 	<bean id="curso1" class="domain.Curso">
@@ -264,6 +465,7 @@
 			</list>
 		</property>
 	</bean>
+	
 	<bean id="curso3" class="domain.Curso">
 		<property name="titulo" value="titulocurso3" />
 		<property name="estilo" ref="estilo1" />
@@ -278,4 +480,5 @@
 			</list>
 		</property>
 	</bean>
+	
 </beans>

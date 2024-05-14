@@ -31,7 +31,7 @@ public abstract class Actor extends DomainEntity {
 	@Column(unique = true)
 	private String					email;
 
-	@Pattern(regexp = "[0-9]{9}")
+	@Pattern(regexp = "\\+\\[0-9]{2}[0-9]{9}")
 	@Column(unique = true)
 	private String					telefono;
 

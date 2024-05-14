@@ -36,6 +36,7 @@ public class Estilo extends DomainEntity {
 
 	public void setNombre(final String nombre) {
 		this.nombre = nombre;
+
 	}
 
 	public String getDescripcion() {
