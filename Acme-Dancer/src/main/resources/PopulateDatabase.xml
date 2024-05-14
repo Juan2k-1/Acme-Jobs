@@ -56,7 +56,7 @@
 		<property name="nombre" value="Carlos" />
 		<property name="apellidos" value="Cano" />
 		<property name="email" value="carlos@gmail.com" />
-		<property name="telefono" value="123456789" />
+		<property name="telefono" value="+34123456789" />
 		<property name="direccion">
 			<bean class="domain.Direccion">
 				<property name="direccion" value="Calle Concepcion 31" />
@@ -81,7 +81,7 @@
 		<property name="nombre" value="Juan_Alberto" />
 		<property name="apellidos" value="Dominguez" />
 		<property name="email" value="juan@gmail.com" />
-		<property name="telefono" value="987654321" />
+		<property name="telefono" value="+34987654321" />
 		<property name="direccion">
 			<bean class="domain.Direccion">
 				<property name="direccion" value="Calle Puerto 12" />
@@ -94,7 +94,7 @@
 		<property name="apellidos" value="Velazquez" />
 		<property name="nombreComercial" value="Huelva_Centro" />
 		<property name="email" value="huelva_centro@gmail.com" />
-		<property name="telefono" value="123498765" />
+		<property name="telefono" value="+34123498765" />
 		<property name="direccion">
 			<bean class="domain.Direccion">
 				<property name="direccion" value="Calle Rabida 11" />
@@ -250,9 +250,6 @@
 				<value>video2</value>
 			</list>
 		</property>
-		<property name="cursos">
-
-		</property>
 	</bean>
 	
 	<bean id="mambo" class="domain.Estilo">
@@ -269,9 +266,6 @@
 				<value>video1</value>
 				<value>video2</value>
 			</list>
-		</property>
-		<property name="cursos">
-
 		</property>
 	</bean>
 	
@@ -290,9 +284,6 @@
 				<value>video2</value>
 			</list>
 		</property>
-		<property name="cursos">
-
-		</property>
 	</bean>
 	
 	<bean id="pachanga" class="domain.Estilo">
@@ -309,9 +300,6 @@
 				<value>video1</value>
 				<value>video2</value>
 			</list>
-		</property>
-		<property name="cursos">
-
 		</property>
 	</bean>
 
@@ -330,9 +318,6 @@
 				<value>video2</value>
 			</list>
 		</property>
-		<property name="cursos">
-
-		</property>
 	</bean>
 	
 	<bean id="sevillanas" class="domain.Estilo">
@@ -349,9 +334,6 @@
 				<value>video1</value>
 				<value>video2</value>
 			</list>
-		</property>
-		<property name="cursos">
-
 		</property>
 	</bean>
 	
@@ -370,9 +352,6 @@
 				<value>video2</value>
 			</list>
 		</property>
-		<property name="cursos">
-
-		</property>
 	</bean>
 	
 	<bean id="chachachá" class="domain.Estilo">
@@ -389,9 +368,6 @@
 				<value>video1</value>
 				<value>video2</value>
 			</list>
-		</property>
-		<property name="cursos">
-
 		</property>
 	</bean>
 	
@@ -410,9 +386,6 @@
 				<value>video2</value>
 			</list>
 		</property>
-		<property name="cursos">
-
-		</property>
 	</bean>
 	
 	<bean id="kizomba" class="domain.Estilo">
@@ -429,8 +402,6 @@
 				<value>video1</value>
 				<value>video2</value>
 			</list>
-		</property>
-		<property name="cursos">
 		</property>
 	</bean>
 	
