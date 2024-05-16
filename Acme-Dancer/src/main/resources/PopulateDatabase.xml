@@ -28,7 +28,7 @@
 	<bean id="userAccount2" class="security.UserAccount">
 		<property name="username" value="alumno" />
 		<property name="password"
-			value="91ec1f9324753048c0096d036a694f86" />
+			value="c6865cf98b133f1f3de596a4a2894630" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -41,7 +41,7 @@
 	<bean id="userAccount3" class="security.UserAccount">
 		<property name="username" value="academia" />
 		<property name="password"
-			value="1b3231655cebb7a1f783eddf27d254ca" />
+			value="21100e9e60400b9704419459ec2babfd" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -74,6 +74,11 @@
 			<list>
 				<ref bean="registeredFor1" />
 				<ref bean="registeredFor2" />
+			</list>
+		</property>
+		<property name="publicadores">
+			<list>
+				<ref bean="actor2" />
 			</list>
 		</property>
 	</bean>

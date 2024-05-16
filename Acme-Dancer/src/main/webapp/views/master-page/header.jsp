@@ -23,45 +23,57 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 
-		<li>
-			<nav>
-				<button><spring:message
-								code="master.page.academies" /></button>
-				<button><spring:message
-								code="master.page.courses" /></button>
-				<button><spring:message
-								code="master.page.styles" /></button>
-			</nav>
-		</li>
-
 		<security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv"><spring:message
 						code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/action-1.do"><spring:message
-								code="master.page.administrator.action.1" /></a></li>
+					<li><a href="administrator/estadisticas.do"><spring:message
+								code="master.page.administrator.estadisticas" /></a></li>
 					<li><a href="administrator/action-2.do"><spring:message
 								code="master.page.administrator.action.2" /></a></li>
 				</ul></li>
 		</security:authorize>
 
-		<security:authorize access="hasRole('CUSTOMER')">
+		<security:authorize access="hasRole('ACADEMIA')">
 			<li><a class="fNiv"><spring:message
-						code="master.page.customer" /></a>
+						code="master.page.academy" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="customer/action-1.do"><spring:message
-								code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message
-								code="master.page.customer.action.2" /></a></li>
+					<li><a href="academy/action-1.do"><spring:message
+								code="master.page.academy.action.1" /></a></li>
+					<li><a href="academy/action-2.do"><spring:message
+								code="master.page.academy.action.2" /></a></li>
+				</ul></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('ALUMNO')">
+			<li><a class="fNiv"><spring:message
+						code="master.page.alumn" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="alumn/action-1.do"><spring:message
+								code="master.page.alumn.action.1" /></a></li>
+					<li><a href="alumn/action-2.do"><spring:message
+								code="master.page.alumn.action.2" /></a></li>
 				</ul></li>
 		</security:authorize>
 
 		<security:authorize access="isAnonymous()">
-			<li><a class="fNiv" href="security/login.do"><spring:message
-						code="master.page.login" /></a></li>
+			<li>
+				<nav class="horizontal-nav">
+					<a class="hover-link"> <spring:message
+							code="master.page.academies" />
+					</a> <a class="hover-link"> <spring:message
+							code="master.page.courses" />
+					</a> <a class="hover-link"> <spring:message
+							code="master.page.styles" />
+					</a>
+				</nav>
+			</li>
 
+			<li><a class="fNiv hover-link" href="security/login.do"><spring:message
+						code="master.page.login" /></a></li>
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">
@@ -81,7 +93,7 @@
 								code="master.page.logout" /> </a></li>
 				</ul></li>
 		</security:authorize>
-	</ul>	
+	</ul>
 </div>
 
 <div>

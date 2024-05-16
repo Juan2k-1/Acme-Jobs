@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
@@ -94,6 +96,7 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@ManyToMany
+	@JoinTable(name = "actor_publicadores", joinColumns = @JoinColumn(name = "actor_id"), inverseJoinColumns = @JoinColumn(name = "publicador_id"))
 	public Collection<Actor> getPublicadores() {
 		return this.publicadores;
 	}
@@ -102,7 +105,7 @@ public abstract class Actor extends DomainEntity {
 		this.publicadores = publicadores;
 	}
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "publicadores")
 	public Collection<Actor> getSubscriptores() {
 		return this.subscriptores;
 	}
