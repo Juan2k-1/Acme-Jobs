@@ -30,8 +30,8 @@
 					<li class="arrow"></li>
 					<li><a href="administrator/estadisticas.do"><spring:message
 								code="master.page.administrator.estadisticas" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message
-								code="master.page.administrator.action.2" /></a></li>
+					<li><a href="administrator/gestionEstilos.do"><spring:message
+								code="master.page.administrator.estilos" /></a></li>
 				</ul></li>
 		</security:authorize>
 

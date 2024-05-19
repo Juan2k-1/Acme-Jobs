@@ -18,39 +18,68 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p>
-	<spring:message code="administrator.estadisticas" />
-</p>
-
-<jstl:if test="${not empty estadisticas}">
-	<ul>
-		<li>Media de cursos por academia:
-			${estadisticas['mediaCursosPorAcademia']}</li>
-		<li>Máximo de cursos por academia:
-			${estadisticas['maxCursosPorAcademia']}</li>
-		<li>Mínimo de cursos por academia:
-			${estadisticas['minCursosPorAcademia']}</li>
-		<li>Desviación de cursos por academia:
-			${estadisticas['desviacionCursosPorAcademia']}</li>
-		<li>Media de solicitudes por curso:
-			${estadisticas['mediaSolicitudesPorCurso']}</li>
-		<li>Máximo de solicitudes por curso:
-			${estadisticas['maxSolicitudesPorCurso']}</li>
-		<li>Mínimo de solicitudes por curso:
-			${estadisticas['minSolicitudesPorCurso']}</li>
-		<li>Desviación de solicitudes por curso:
-			${estadisticas['desviacionSolicitudesPorCurso']}</li>
-		<li>Mínimo de tutoriales por academia:
-			${estadisticas['minTutorialesPorAcademia']}</li>
-		<li>Media de tutoriales por academia:
-			${estadisticas['mediaTutorialesPorAcademia']}</li>
-		<li>Máximo de tutoriales por academia:
-			${estadisticas['maxTutorialesPorAcademia']}</li>
-	</ul>
-</jstl:if>
-<jstl:if test="${empty estadisticas}">
-	<p>No hay datos disponibles.</p>
-</jstl:if>
+<jstl:choose>
+    <jstl:when test="${not empty estadisticas}">
+        <table class="statistics-table">
+            <thead>
+                <tr>
+                    <th><spring:message code="administrator.estadisticas" /></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><spring:message code="administrator.media.curso" /></td>
+                    <td>${estadisticas['mediaCursosPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.max.courses" /></td>
+                    <td>${estadisticas['maxCursosPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.min.courses" /></td>
+                    <td>${estadisticas['minCursosPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.desv.courses" /></td>
+                    <td>${estadisticas['desviacionCursosPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.media.requests.courses" /></td>
+                    <td>${estadisticas['mediaSolicitudesPorCurso']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.max.requests.courses" /></td>
+                    <td>${estadisticas['maxSolicitudesPorCurso']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.min.requests.courses" /></td>
+                    <td>${estadisticas['minSolicitudesPorCurso']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.desv.requests.courses" /></td>
+                    <td>${estadisticas['desviacionSolicitudesPorCurso']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.min.tutorials.academy" /></td>
+                    <td>${estadisticas['minTutorialesPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.media.tutorials.academy" /></td>
+                    <td>${estadisticas['mediaTutorialesPorAcademia']}</td>
+                </tr>
+                <tr>
+                    <td><spring:message code="administrator.max.tutorials.academy" /></td>
+                    <td>${estadisticas['maxTutorialesPorAcademia']}</td>
+                </tr>
+            </tbody>
+        </table>
+    </jstl:when>
+    <jstl:otherwise>
+        <p>
+            <spring:message code="administrator.no.data" />.
+        </p>
+    </jstl:otherwise>
+</jstl:choose>
 
 <!-- <table> -->
 <!-- 	<tr> -->

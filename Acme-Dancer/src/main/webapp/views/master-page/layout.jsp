@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="styles/jmenu.css" media="screen" type="text/css" />
 <link rel="stylesheet" href="styles/displaytag.css" type="text/css">
 <link rel="stylesheet" href="styles/mainPageStyle.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/AdminStyle.css">
+<link rel="stylesheet" type="text/css" href="styles/editarEstilo.css">
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
