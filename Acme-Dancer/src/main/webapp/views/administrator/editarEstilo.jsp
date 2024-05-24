@@ -1,21 +1,30 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Editar Estilo</title>
-</head>
-<body>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<h1>Editar Estilo</h1>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form method="post" action="/administrator/guardarEstilo" modelAttribute="estilo">
-    <form:hidden path="id" />
-    <label>Nombre del Estilo:</label>
-    <form:input path="nombre" />
-    <form:errors path="nombre" cssClass="error" />
-    <br/>
-    <input type="submit" value="Actualizar" />
-</form:form>
+<div>
+    <h2><spring:message code="administrator.edit.style"/></h2>
+    <form:form method="POST" action="${pageContext.request.contextPath}/administrator/guardarEstilo.do" modelAttribute="estilo">
+        <form:hidden path="id"/>
+        <div>
+            <label for="nombre"><spring:message code="administrator.name"/></label>
+            <form:input path="nombre" id="nombre"/>
+        </div>
+        
+        <div>
+            <label for="descripcion"><spring:message code="administrator.description"/></label>
+            <form:input path="descripcion" id="descripcion" />
+        </div>
+        
+        <div>
+            <input type="submit" value="<spring:message code='administrator.save.changes'/>"/>
+        </div>
+    </form:form>
+</div>
 
-</body>
-</html>

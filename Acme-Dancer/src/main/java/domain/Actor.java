@@ -13,10 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import security.UserAccount;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -44,6 +47,10 @@ public abstract class Actor extends DomainEntity {
 	private Collection<Actor>		publicadores;
 
 	private Collection<Actor>		subscriptores;
+
+	@Column(unique = true)
+	@JoinColumn(name = "cuentaUsuario_id")
+	private UserAccount				cuentaUsuario;
 
 
 	public String getNombre() {
@@ -112,5 +119,14 @@ public abstract class Actor extends DomainEntity {
 
 	public void setSubscriptores(final Collection<Actor> subscriptores) {
 		this.subscriptores = subscriptores;
+	}
+
+	@OneToOne
+	public UserAccount getCuentaUsuario() {
+		return this.cuentaUsuario;
+	}
+
+	public void setCuentaUsuario(final UserAccount cuentaUsuario) {
+		this.cuentaUsuario = cuentaUsuario;
 	}
 }

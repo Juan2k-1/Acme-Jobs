@@ -81,7 +81,9 @@
 				<ref bean="actor2" />
 			</list>
 		</property>
+		<property name="cuentaUsuario" ref="userAccount2" />
 	</bean>
+	
 	<bean id="actor2" class="domain.Administrador">
 		<property name="nombre" value="Juan_Alberto" />
 		<property name="apellidos" value="Dominguez" />
@@ -93,7 +95,9 @@
 				<property name="codigoPostal" value="10000" />
 			</bean>
 		</property>
+		<property name="cuentaUsuario" ref="userAccount1" />
 	</bean>
+	
 	<bean id="actor3" class="domain.Academia">
 		<property name="nombre" value="Nacho" />
 		<property name="apellidos" value="Velazquez" />
@@ -106,6 +110,7 @@
 				<property name="codigoPostal" value="54321" />
 			</bean>
 		</property>
+		<property name="cuentaUsuario" ref="userAccount3" />
 	</bean>
 	
 	<!---Entidad Alumno 

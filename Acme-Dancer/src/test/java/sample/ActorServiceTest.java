@@ -40,7 +40,7 @@ public class ActorServiceTest extends AbstractTest {
 		actor.setNombre("Juan Alberto");
 		actor.setApellidos("Dominguez Vazquez");
 		actor.setEmail("juan@gmail.com");
-		actor.setTelefono("123456789");
+		actor.setTelefono("+34123456789");
 		actor.setDireccion(direccion);
 
 		final Actor saved = this.actorService.save(actor);

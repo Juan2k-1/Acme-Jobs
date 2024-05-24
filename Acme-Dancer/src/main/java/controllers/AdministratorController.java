@@ -13,8 +13,11 @@ package controllers;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +25,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Academia;
+import domain.Actor;
 import domain.Curso;
 import domain.Estilo;
 import domain.RegisteredFor;
 import domain.Tutorial;
 import services.AcademiaService;
+import services.ActorService;
 import services.AdministradorService;
 import services.CursoService;
 import services.EstiloService;
@@ -55,6 +60,9 @@ public class AdministratorController extends AbstractController {
 	@Autowired
 	private EstiloService			estiloService;
 
+	@Autowired
+	private ActorService			actorService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -74,7 +82,8 @@ public class AdministratorController extends AbstractController {
 		final Collection<Tutorial> tutoriales = this.tutorialService.findAll();
 		final Collection<Curso> cursos = this.cursoService.findAll();
 		final Collection<RegisteredFor> registeredFor = this.registeredForService.findAll();
-		estadisticas = this.administradorService.calcularEstadisticas(cursos, academias, tutoriales, registeredFor);
+		final Collection<Actor> actores = this.actorService.findAll();
+		estadisticas = this.administradorService.calcularEstadisticas(cursos, academias, tutoriales, registeredFor, actores);
 
 		result = new ModelAndView("administrator/estadisticas");
 		result.addObject("estadisticas", estadisticas);
@@ -89,28 +98,45 @@ public class AdministratorController extends AbstractController {
 		final ModelAndView result = new ModelAndView("administrator/gestionEstilos");
 		final Collection<Estilo> estilos = this.estiloService.findAll();
 		result.addObject("estilos", estilos);
+		result.addObject("nuevoEstilo", new Estilo());
 		return result;
 	}
 
 	@RequestMapping(value = "/editarEstilo", method = RequestMethod.GET)
 	public ModelAndView editarEstilo(@RequestParam("id") final int id) {
-		final ModelAndView mav = new ModelAndView("administrator/editarEstilo");
+		final ModelAndView result;
 		final Estilo estilo = this.estiloService.findOne(id);
-		mav.addObject("estilo", estilo);
-		return mav;
+
+		result = new ModelAndView("administrator/editarEstilo");
+		result.addObject("estilo", estilo);
+		return result;
 	}
 
 	@RequestMapping(value = "/guardarEstilo", method = RequestMethod.POST)
 	public ModelAndView guardarEstilo(@ModelAttribute("estilo") final Estilo estilo) {
-		final ModelAndView mav = new ModelAndView();
 		this.estiloService.save(estilo);
-		mav.setViewName("redirect:/administrator/gestionEstilos");
-		return mav;
+		final ModelAndView result = new ModelAndView("redirect:/administrator/gestionEstilos.do");
+		return result;
 	}
 
-	@RequestMapping(value = "/eliminarEstilo", method = RequestMethod.POST)
+	@RequestMapping(value = "/crearEstilo", method = RequestMethod.POST)
+	public ModelAndView crearEstilo(@Valid @ModelAttribute("nuevoEstilo") final Estilo estilo, final BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			final ModelAndView result = new ModelAndView("administrator/gestionEstilos");
+			final Collection<Estilo> estilos = this.estiloService.findAll();
+			result.addObject("estilos", estilos);
+			result.addObject("nuevoEstilo", estilo);
+			return result;
+		}
+		this.estiloService.save(estilo);
+		return new ModelAndView("redirect:/administrator/gestionEstilos.do");
+	}
+
+	@RequestMapping(value = "/eliminarEstilo", method = {
+		RequestMethod.GET, RequestMethod.POST
+	})
 	public ModelAndView eliminarEstilo(@RequestParam("id") final int id) {
-		final ModelAndView mav = new ModelAndView("redirect:/administrator/gestionEstilos");
+		final ModelAndView mav = new ModelAndView("redirect:/administrator/gestionEstilos.do");
 		final Estilo estilo = this.estiloService.findOne(id);
 		this.estiloService.delete(estilo);
 		return mav;

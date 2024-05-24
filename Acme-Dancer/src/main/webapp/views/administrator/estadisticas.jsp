@@ -20,7 +20,7 @@
 
 <jstl:choose>
     <jstl:when test="${not empty estadisticas}">
-        <table class="statistics-table">
+        <table class="styles-table">
             <thead>
                 <tr>
                     <th><spring:message code="administrator.estadisticas" /></th>
@@ -31,18 +31,22 @@
                     <td><spring:message code="administrator.media.curso" /></td>
                     <td>${estadisticas['mediaCursosPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.max.courses" /></td>
                     <td>${estadisticas['maxCursosPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.min.courses" /></td>
                     <td>${estadisticas['minCursosPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.desv.courses" /></td>
                     <td>${estadisticas['desviacionCursosPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.media.requests.courses" /></td>
                     <td>${estadisticas['mediaSolicitudesPorCurso']}</td>
@@ -51,10 +55,12 @@
                     <td><spring:message code="administrator.max.requests.courses" /></td>
                     <td>${estadisticas['maxSolicitudesPorCurso']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.min.requests.courses" /></td>
                     <td>${estadisticas['minSolicitudesPorCurso']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.desv.requests.courses" /></td>
                     <td>${estadisticas['desviacionSolicitudesPorCurso']}</td>
@@ -63,13 +69,25 @@
                     <td><spring:message code="administrator.min.tutorials.academy" /></td>
                     <td>${estadisticas['minTutorialesPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.media.tutorials.academy" /></td>
                     <td>${estadisticas['mediaTutorialesPorAcademia']}</td>
                 </tr>
+                
                 <tr>
                     <td><spring:message code="administrator.max.tutorials.academy" /></td>
                     <td>${estadisticas['maxTutorialesPorAcademia']}</td>
+                </tr>
+                
+                 <tr>
+                    <td><spring:message code="administrator.media.comentaries.actor" /></td>
+                    <td>${estadisticas['mediaComentariosPorActor']}</td>
+                </tr>
+                
+                <tr>
+                    <td><spring:message code="administrator.media.subscribers.actor" /></td>
+                    <td>${estadisticas['mediaSuscriptoresPorActor']}</td>
                 </tr>
             </tbody>
         </table>
@@ -80,22 +98,3 @@
         </p>
     </jstl:otherwise>
 </jstl:choose>
-
-<!-- <table> -->
-<!-- 	<tr> -->
-<%-- 		<th><spring:message code="administrator.indicator" /></th> --%>
-<%-- 		<th><spring:message code="administrator.value" /></th> --%>
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<%-- 		<td><spring:message code="administrator.count.all.shouts" /></td> --%>
-<%-- 		<td><jstl:out value="${statistics.get('count.all.shouts')}" /></td> --%>
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<%-- 		<td><spring:message code="administrator.count.short.shouts" /></td> --%>
-<%-- 		<td><jstl:out value="${statistics.get('count.short.shouts')}" /></td> --%>
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<%-- 		<td><spring:message code="administrator.count.long.shouts" /></td> --%>
-<%-- 		<td><jstl:out value="${statistics.get('count.long.shouts')}" /></td> --%>
-<!-- 	</tr> -->
-<!-- </table> -->

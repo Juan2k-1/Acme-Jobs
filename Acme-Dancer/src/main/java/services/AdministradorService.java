@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Academia;
+import domain.Actor;
 import domain.Administrador;
 import domain.Curso;
 import domain.RegisteredFor;
@@ -71,7 +72,7 @@ public class AdministradorService {
 		return result;
 	}
 
-	public Map<String, Float> calcularEstadisticas(final Collection<Curso> cursos, final Collection<Academia> academias, final Collection<Tutorial> tutoriales, final Collection<RegisteredFor> registeredFor) {
+	public Map<String, Float> calcularEstadisticas(final Collection<Curso> cursos, final Collection<Academia> academias, final Collection<Tutorial> tutoriales, final Collection<RegisteredFor> registeredFor, final Collection<Actor> actores) {
 		// Inicializar el mapa para almacenar las estadísticas
 		final Map<String, Float> estadisticas = new HashMap<>();
 
@@ -87,6 +88,8 @@ public class AdministradorService {
 		estadisticas.put("minTutorialesPorAcademia", (float) this.calcularMinTutorialesPorAcademia(academias, tutoriales));
 		estadisticas.put("mediaTutorialesPorAcademia", this.calcularMediaTutorialesPorAcademia(academias, tutoriales));
 		estadisticas.put("maxTutorialesPorAcademia", (float) this.calcularMaxTutorialesPorAcademia(academias, tutoriales));
+		estadisticas.put("mediaComentariosPorActor", this.calcularMediaComentariosPorActor(actores));
+		estadisticas.put("mediaSuscriptoresPorActor", this.calcularMediaSuscriptoresPorActor(actores));
 
 		// Devolver el mapa de estadísticas
 		return estadisticas;
@@ -358,5 +361,19 @@ public class AdministradorService {
 				maxTutoriales = count;
 
 		return maxTutoriales;
+	}
+
+	public float calcularMediaComentariosPorActor(final Collection<Actor> actores) {
+		int totalComentarios = 0;
+		for (final Actor actor : actores)
+			totalComentarios += actor.getComentarios().size();
+		return actores.isEmpty() ? 0 : (float) totalComentarios / actores.size();
+	}
+
+	public float calcularMediaSuscriptoresPorActor(final Collection<Actor> actores) {
+		int totalSuscriptores = 0;
+		for (final Actor actor : actores)
+			totalSuscriptores += actor.getSubscriptores().size();
+		return actores.isEmpty() ? 0 : (float) totalSuscriptores / actores.size();
 	}
 }

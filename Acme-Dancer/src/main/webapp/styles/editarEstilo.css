@@ -40,7 +40,7 @@ form {
 }
 
 .styles-table tbody tr:last-of-type {
-    border-bottom: 2px solid pink; /* Cambia el color a rosa (#ff69b4) */
+    border-bottom: 2px solid pink; 
 }
 
 .styles-table tbody tr:hover {
