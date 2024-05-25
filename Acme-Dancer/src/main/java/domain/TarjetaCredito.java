@@ -86,7 +86,7 @@ public class TarjetaCredito extends DomainEntity {
 		this.codigoCVV = codigoCVV;
 	}
 
-	@OneToOne(optional = true)
+	@OneToOne(mappedBy = "tarjetaCredito", optional = true)
 	public Alumno getAlumno() {
 		return this.alumno;
 	}

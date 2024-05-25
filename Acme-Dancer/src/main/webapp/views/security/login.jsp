@@ -39,6 +39,6 @@
 	</jstl:if>
 	
 	<input type="submit" value="<spring:message code="security.login" />" />
-	<p>No tienes cuenta? <a href="registerActor/register.do">Crear cuenta</a></p>
+	<p><spring:message code="security.question" /> <a href="registerActor/register.do"><spring:message code="security.create" /></a></p>
 	
 </form:form>

@@ -10,7 +10,7 @@
 
 <div>
     <h2><spring:message code="administrator.edit.style"/></h2>
-    <form:form method="POST" action="${pageContext.request.contextPath}/administrator/guardarEstilo.do" modelAttribute="estilo">
+    <form:form method="POST" action="administrator/guardarEstilo.do" modelAttribute="estilo">
         <form:hidden path="id"/>
         <div>
             <label for="nombre"><spring:message code="administrator.name"/></label>
@@ -23,7 +23,7 @@
         </div>
         
         <div>
-            <input type="submit" value="<spring:message code='administrator.save.changes'/>"/>
+            <input type="submit" value="<spring:message code="administrator.save.changes"/>"/>
         </div>
     </form:form>
 </div>

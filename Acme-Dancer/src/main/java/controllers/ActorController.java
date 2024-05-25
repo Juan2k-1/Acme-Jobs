@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Academia;
 import domain.Alumno;
 import domain.Direccion;
+import domain.TarjetaCredito;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
@@ -64,7 +65,16 @@ public class ActorController extends AbstractController {
 		final String direccion = request.getParameter("direccion");
 		final String codigoPostal = request.getParameter("codigoPostal");
 		final String actorType = request.getParameter("actorType");
-		//final String tarjetaCredito = request.getParameter("tarjetaCredito");
+
+		final String titular = request.getParameter("titular");
+		final String marca = request.getParameter("marca");
+		final String numero = request.getParameter("numero");
+		final String mesString = request.getParameter("mes");
+		final int mes = Integer.parseInt(mesString);
+		final String añoString = request.getParameter("año");
+		final int año = Integer.parseInt(añoString);
+		final String codigoCVV = request.getParameter("codigoCVV");
+
 		final String nombreComercial = request.getParameter("nombreComercial");
 
 		final Direccion dir = new Direccion();
@@ -100,13 +110,17 @@ public class ActorController extends AbstractController {
 			alumno.setTelefono(telefono);
 			alumno.setDireccion(dir);
 
-			//			if (tarjetaCredito != null) {
-			//				final TarjetaCredito tarjeta = new TarjetaCredito();
-			//				tarjeta.setNumero(tarjetaCredito);
-			//				tarjeta.setTitular(alumno.getNombre());
-			//				this.tarjetaCreditoService.save(tarjeta);
-			//				alumno.setTarjetaCredito(tarjeta);
-			//			}
+			if (titular != null) {
+				final TarjetaCredito tarjeta = new TarjetaCredito();
+				tarjeta.setNumero(numero);
+				tarjeta.setTitular(titular);
+				tarjeta.setMarca(marca);
+				tarjeta.setAño(año);
+				tarjeta.setMes(mes);
+				tarjeta.setCodigoCVV(codigoCVV);
+				final TarjetaCredito tarjetaSaved = this.tarjetaCreditoService.save(tarjeta);
+				alumno.setTarjetaCredito(tarjetaSaved);
+			}
 
 			if (savedUserAccount != null)
 				alumno.setCuentaUsuario(savedUserAccount);

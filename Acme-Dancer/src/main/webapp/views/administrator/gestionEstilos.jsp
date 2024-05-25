@@ -34,10 +34,10 @@
                 <td>${estilo.nombre}</td>
                 <td>${estilo.descripcion}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/administrator/editarEstilo.do?id=${estilo.id}">
+                    <a href="administrator/editarEstilo.do?id=${estilo.id}">
                     	<spring:message code="administrator.edit"/>
                     </a>
-                    | <a href="${pageContext.request.contextPath}/administrator/eliminarEstilo.do?id=${estilo.id}" 
+                    | <a href="administrator/eliminarEstilo.do?id=${estilo.id}" 
                     onclick="return confirm('<spring:message code="administrator.confirm.delete"/>');">
                     	<spring:message code="administrator.delete"/>
                     </a>

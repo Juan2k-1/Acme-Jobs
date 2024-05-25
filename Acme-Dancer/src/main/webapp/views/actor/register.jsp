@@ -17,60 +17,75 @@
 <form:form id="register" method="POST" action="registerActor/register.do">
 
 	<!-- Campos para la cuenta de usuario -->
-	<label for="username">Nombre de usuario:</label>
+	<label for="username"><spring:message code="register.username" />:</label>
 	<input type="text" id="username" name="username" />
 	<br />
 
-	<label for="password">Contraseña:</label>
+	<label for="password"><spring:message code="register.password" />:</label>
 	<input type="password" id="password" name="password" />
 	<br />
 
 	<!-- Campos para el actor -->
-	<label for="nombre">Nombre:</label>
+	<label for="nombre"><spring:message code="register.nombre" />:</label>
 	<input type="text" id="nombre" name="nombre" />
 	<br />
 
-	<label for="apellidos">Apellidos:</label>
+	<label for="apellidos"><spring:message code="register.apellidos" />:</label>
 	<input type="text" id="apellidos" name="apellidos" />
 	<br />
 
-	<label for="email">Email:</label>
+	<label for="email"><spring:message code="register.email" />:</label>
 	<input type="email" id="email" name="email" />
 	<br />
 
-	<label for="telefono">Teléfono:</label>
+	<label for="telefono"><spring:message code="register.telefono" />:</label>
 	<input type="text" id="telefono" name="telefono" />
 	<br />
 	
-	<label for="direccion">Dirección:</label>
+	<label for="direccion"><spring:message code="register.direccion" />:</label>
 	<input type="text" id="direccion" name="direccion" />
 	<br />
 	
-	<label for="codigoPostal">Código Postal:</label>
+	<label for="codigoPostal"><spring:message code="register.codigoPostal" />:</label>
 	<input type="text" id="codigoPostal" name="codigoPostal" />
 	<br />
 
-	<label for="actorType">Tipo de actor:</label>
+	<label for="actorType"><spring:message code="register.actorType" />:</label>
 	<select id="actorType" name="actorType">
-		<option value="">Seleccione</option>
-		<option value="ALUMNO">Alumno</option>
-		<option value="ACADEMIA">Academia</option>
+		<option value=""><spring:message code="register.seleccione" /></option>
+		<option value="ALUMNO"><spring:message code="register.alumno" /></option>
+		<option value="ACADEMIA"><spring:message code="register.academia" /></option>
 	</select>
 	<br />
 
 	<!-- Campos específicos para Alumno -->
 	<div id="alumnoFields" class="hidden">
-		<label for="tarjetaCredito">Tarjeta de Crédito:</label> <input
-			type="text" id="tarjetaCredito" name="tarjetaCredito" /> <br />
+		<label for="titular"><spring:message code="register.titular" />:</label> 
+	    <input type="text" id="titular" name="titular" required /> <br />
+	
+	    <label for="marca"><spring:message code="register.marca" />:</label> 
+	    <input type="text" id="marca" name="marca" required /> <br />
+	
+	    <label for="numero"><spring:message code="register.numero" />:</label> 
+	    <input type="text" id="numero" name="numero" pattern="\d*" required /> <br />
+	
+	    <label for="mes"><spring:message code="register.mes" />:</label> 
+	    <input type="number" id="mes" name="mes" min="1" max="12" required /> <br />
+	
+	    <label for="año"><spring:message code="register.año" />:</label> 
+	    <input type="number" id="año" name="año" min="2024" required /> <br />
+	
+	    <label for="codigoCVV"><spring:message code="register.codigoCVV" />:</label> 
+	    <input type="text" id="codigoCVV" name="codigoCVV" pattern="\d{3}" required /> <br />
 	</div>
 
 	<!-- Campos específicos para Academia -->
 	<div id="academiaFields" class="hidden">
-		<label for="nombreComercial">Nombre Comercial:</label> <input
+		<label for="nombreComercial"><spring:message code="register.nombreComercial" />:</label> <input
 			type="text" id="nombreComercial" name="nombreComercial" /> <br />
 	</div>
 
 	<!-- Botón para enviar el formulario -->
-	<input type="submit" value="Registrarse" />
+	<input type="submit" value="<spring:message code='register.registrarse' />" />
 
 </form:form>
