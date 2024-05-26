@@ -60,6 +60,7 @@
 
 		<security:authorize access="isAnonymous()">
 			<li>
+<<<<<<< HEAD
 				<nav class="horizontal-nav">
 					<a class="hover-link"> <spring:message
 							code="master.page.academies" />
@@ -70,6 +71,18 @@
 					</a>
 				</nav>
 			</li>
+=======
+                <nav class="horizontal-nav">
+                    <a href="academy/gestionAcademia.do" class="hover-link"> <spring:message
+                            code="master.page.academies" />
+                    </a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
+                            code="master.page.courses" />
+                    </a> <a href="style/gestionEstilos.do" class="hover-link"> <spring:message
+                            code="master.page.styles" />
+                    </a>
+                </nav>
+            </li>
+>>>>>>> refs/remotes/origin/master
 
 			<li><a class="fNiv hover-link" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>

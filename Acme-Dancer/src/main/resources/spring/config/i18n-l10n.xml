@@ -28,6 +28,7 @@
 		<value>/views/profile/messages</value>
 		<value>/views/course/messages</value>
 		<value>/views/style/messages</value>
+		<value>/views/academy/messages</value>
 
 	</util:list>
 
