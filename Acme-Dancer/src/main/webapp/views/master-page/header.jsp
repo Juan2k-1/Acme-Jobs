@@ -61,16 +61,16 @@
 
 		<security:authorize access="isAnonymous()">
 			<li>
-				<nav class="horizontal-nav">
-					<a class="hover-link"> <spring:message
-							code="master.page.academies" />
-					</a> <a class="hover-link"> <spring:message
-							code="master.page.courses" />
-					</a> <a class="hover-link"> <spring:message
-							code="master.page.styles" />
-					</a>
-				</nav>
-			</li>
+                <nav class="horizontal-nav">
+                    <a class="hover-link"> <spring:message
+                            code="master.page.academies" />
+                    </a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
+                            code="master.page.courses" />
+                    </a> <a class="hover-link"> <spring:message
+                            code="master.page.styles" />
+                    </a>
+                </nav>
+            </li>
 
 			<li><a class="fNiv hover-link" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>
