@@ -66,7 +66,7 @@
                             code="master.page.academies" />
                     </a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
                             code="master.page.courses" />
-                    </a> <a class="hover-link"> <spring:message
+                    </a> <a href="style/gestionEstilos.do" class="hover-link"> <spring:message
                             code="master.page.styles" />
                     </a>
                 </nav>
