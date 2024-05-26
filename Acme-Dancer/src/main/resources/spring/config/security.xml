@@ -54,9 +54,8 @@
 		<security:intercept-url pattern="/alumn/action-1.do" access="hasRole('ALUMNO')" /> 
 		<security:intercept-url pattern="/alumn/action-2.do" access="hasRole('ALUMNO')" />
 
-		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/profile/editarDatos.do" access="isAuthenticated()" /> 
+
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

@@ -50,6 +50,8 @@ public class TutorialService {
 
 		result = this.tutorialRepository.findOne(tutorialId);
 		Assert.notNull(result);
+		final int reproducciones = result.getNumReproducciones();
+		result.setNumReproducciones(reproducciones);
 
 		return result;
 	}
@@ -61,6 +63,8 @@ public class TutorialService {
 
 		result = this.tutorialRepository.findByTitle(titulo);
 		Assert.notNull(result);
+		final int reproducciones = result.getNumReproducciones();
+		result.setNumReproducciones(reproducciones);
 
 		return result;
 	}

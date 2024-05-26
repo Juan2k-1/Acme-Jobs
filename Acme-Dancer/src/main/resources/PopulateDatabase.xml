@@ -203,6 +203,7 @@
 			</list>
 		</property>
 		<property name="academia" ref="actor3" />
+		<property name="numReproducciones" value="0" />
 	</bean>
 
 	<!---Entidad Comentario -->

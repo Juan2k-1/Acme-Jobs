@@ -25,6 +25,8 @@ public class Tutorial extends DomainEntity {
 
 	private Academia			academia;
 
+	private int					numReproducciones;
+
 
 	//Getters y Setters
 
@@ -61,4 +63,13 @@ public class Tutorial extends DomainEntity {
 	public void setAcademia(final Academia academia) {
 		this.academia = academia;
 	}
+
+	public int getNumReproducciones() {
+		return this.numReproducciones;
+	}
+
+	public void setNumReproducciones(final int numReproducciones) {
+		this.numReproducciones = numReproducciones;
+	}
+
 }

@@ -46,10 +46,9 @@
 								code="master.page.academy.action.2" /></a></li>
 				</ul></li>
 		</security:authorize>
-		
+
 		<security:authorize access="hasRole('ALUMNO')">
-			<li><a class="fNiv"><spring:message
-						code="master.page.alumn" /></a>
+			<li><a class="fNiv"><spring:message code="master.page.alumn" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="alumn/action-1.do"><spring:message
@@ -61,34 +60,43 @@
 
 		<security:authorize access="isAnonymous()">
 			<li>
-                <nav class="horizontal-nav">
-                    <a class="hover-link"> <spring:message
-                            code="master.page.academies" />
-                    </a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
-                            code="master.page.courses" />
-                    </a> <a href="style/gestionEstilos.do" class="hover-link"> <spring:message
-                            code="master.page.styles" />
-                    </a>
-                </nav>
-            </li>
+				<nav class="horizontal-nav">
+					<a class="hover-link"> <spring:message
+							code="master.page.academies" />
+					</a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
+							code="master.page.courses" />
+					</a> <a href="style/gestionEstilos.do" class="hover-link"> <spring:message
+							code="master.page.styles" />
+					</a>
+				</nav>
+			</li>
 
 			<li><a class="fNiv hover-link" href="security/login.do"><spring:message
 						code="master.page.login" /></a></li>
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">
+
+			<li>
+				<nav class="horizontal-nav">
+					<a class="hover-link"> <spring:message
+							code="master.page.academies" />
+					</a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
+							code="master.page.courses" />
+					</a> <a href="style/gestionEstilos.do" class="hover-link"> <spring:message
+							code="master.page.styles" />
+					</a>
+				</nav>
+			</li>
+
 			<li><a class="fNiv"> <spring:message
 						code="master.page.profile" /> (<security:authentication
 						property="principal.username" />)
 			</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="profile/action-1.do"><spring:message
-								code="master.page.profile.action.1" /></a></li>
-					<li><a href="profile/action-2.do"><spring:message
-								code="master.page.profile.action.2" /></a></li>
-					<li><a href="profile/action-3.do"><spring:message
-								code="master.page.profile.action.3" /></a></li>
+					<li><a href="profile/editarDatos.do"><spring:message
+								code="master.page.profile.editarDatos" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message
 								code="master.page.logout" /> </a></li>
 				</ul></li>

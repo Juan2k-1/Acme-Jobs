@@ -49,7 +49,7 @@
 
 <!-- Formulario para crear un nuevo estilo -->
 <h2><spring:message code="administrator.create.new.style"/></h2>
-<form:form method="POST" action="${pageContext.request.contextPath}/administrator/crearEstilo.do" modelAttribute="nuevoEstilo">
+<form:form method="POST" action="administrator/crearEstilo.do" modelAttribute="nuevoEstilo">
     <div>
         <label for="nombre"><spring:message code="administrator.name"/></label>
         <form:input path="nombre" id="nombre" />
