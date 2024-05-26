@@ -62,7 +62,7 @@
 		<security:authorize access="isAnonymous()">
 			<li>
                 <nav class="horizontal-nav">
-                    <a class="hover-link"> <spring:message
+                    <a href="academy/gestionAcademia.do" class="hover-link"> <spring:message
                             code="master.page.academies" />
                     </a> <a href="course/gestionCursos.do" class="hover-link"> <spring:message
                             code="master.page.courses" />
