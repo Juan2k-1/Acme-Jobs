@@ -18,21 +18,28 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<!-- Listado de cursos existentes -->
+<!-- Datos de curso -->
 <table class="styles-table">
     <thead>
         <tr>
-            <th><spring:message code="cursos.nombre"/></th>
-            <th><spring:message code="cursos.academia"/></th>
+            <th><spring:message code="curso.nombre"/></th>
+            <th><spring:message code="curso.nivel"/></th>
+            <th><spring:message code="curso.inicio"/></th>
+            <th><spring:message code="curso.fin"/></th>
+            <th><spring:message code="cursos.hora"/></th>
+            <th><spring:message code="curso.estilo"/></th>
+            <th><spring:message code="curso.academia"/></th>
         </tr>
     </thead>
     <tbody>
-        <jstl:forEach var="cursos" items="${cursos}">
             <tr>
-                <td><a href="course/DatosCursos.do?id=${cursos.id}">${cursos.titulo}</a></td>
-                <td>${cursos.academia.nombreComercial}</td>   
+                <td>${curso.titulo}</td>
+                <td>${curso.nivel}</td>
+                <td>${curso.fechaInicio}</td>  
+                <td>${curso.fechaFin}</td>  
+                <td>${curso.hora}</td>  
+                <td>${curso.estilo.nombre}</td>  
+                <td>${curso.academia.nombreComercial}</td>     
             </tr>
-        </jstl:forEach>
-
     </tbody>
 </table>
