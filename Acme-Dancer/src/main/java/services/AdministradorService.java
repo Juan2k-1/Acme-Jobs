@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,33 @@ public class AdministradorService {
 		return result;
 	}
 
+	public Administrador update(final Administrador administrador) {
+		Assert.notNull(administrador);
+		Administrador result;
+
+		result = this.administradorRepository.findOne(administrador.getId());
+
+		if (result != null) {
+			result.setNombre(administrador.getNombre());
+			result.setApellidos(administrador.getApellidos());
+			result.setEmail(administrador.getEmail());
+			result.setDireccion(administrador.getDireccion());
+			result.setCuentaUsuario(administrador.getCuentaUsuario());
+			result.setComentarios(administrador.getComentarios());
+
+			final Collection<Actor> publicadores = new ArrayList<>(administrador.getPublicadores());
+			final Collection<Actor> subscriptores = new ArrayList<>(administrador.getSubscriptores());
+
+			result.setPublicadores(publicadores);
+			result.setSubscriptores(subscriptores);
+
+			result.setTelefono(administrador.getTelefono());
+
+			result = this.administradorRepository.save(result);
+		}
+		return result;
+	}
+
 	public void delete(final Administrador admin) {
 		Assert.notNull(admin);
 		Assert.isTrue(admin.getId() != 0);
@@ -70,6 +98,11 @@ public class AdministradorService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public int findId(final int userAccountId) {
+		final int idAdmin = this.administradorRepository.findId(userAccountId);
+		return idAdmin;
 	}
 
 	public Map<String, Float> calcularEstadisticas(final Collection<Curso> cursos, final Collection<Academia> academias, final Collection<Tutorial> tutoriales, final Collection<RegisteredFor> registeredFor, final Collection<Actor> actores) {

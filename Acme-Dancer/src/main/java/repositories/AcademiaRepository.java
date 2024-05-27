@@ -15,4 +15,7 @@ public interface AcademiaRepository extends JpaRepository<Academia, Integer> {
 
 	@Query("SELECT a FROM Academia a WHERE LOWER(a.nombreComercial) LIKE LOWER(CONCAT('%', ?1, '%'))")
 	Academia findByName(String nombre);
+
+	@Query("SELECT a.id FROM Academia a WHERE a.cuentaUsuario.id = ?1")
+	int findId(int userAccountId);
 }

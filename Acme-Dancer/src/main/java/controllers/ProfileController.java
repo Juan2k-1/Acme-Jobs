@@ -10,8 +10,7 @@
 
 package controllers;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,8 +20,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Academia;
+import domain.Administrador;
+import domain.Alumno;
+import domain.Direccion;
+import domain.TarjetaCredito;
+import security.Authority;
 import security.LoginService;
+import security.UserAccount;
 import services.AcademiaService;
+import services.ActorService;
+import services.AdministradorService;
 import services.AlumnoService;
 import services.TarjetaCreditoService;
 import services.UserAccountService;
@@ -46,86 +54,152 @@ public class ProfileController extends AbstractController {
 	@Autowired
 	UserAccountService		userService;
 
+	@Autowired
+	ActorService			actorService;
+
+	@Autowired
+	AdministradorService	adminitradorService;
+
 
 	@RequestMapping(value = "/editarDatos", method = RequestMethod.GET)
 	public ModelAndView editarDatos() {
 		final ModelAndView modelAndView = new ModelAndView("profile/editarDatos");
+		final UserAccount userAccount = LoginService.getPrincipal();
+
+		if (userAccount == null) {
+			modelAndView.setViewName("error");
+			modelAndView.addObject("message", "User is not authenticated.");
+			return modelAndView;
+		}
+
+		final Collection<Authority> authorities = userAccount.getAuthorities();
+		for (final Authority authority : authorities)
+			if (authority.getAuthority().equalsIgnoreCase("ALUMNO")) {
+				final int alumnoId = this.alumnoService.findId(userAccount.getId());
+				final Alumno alumno = this.alumnoService.findOne(alumnoId);
+				modelAndView.addObject("actor", alumno);
+			} else if (authority.getAuthority().equalsIgnoreCase("ACADEMIA")) {
+				final int academiaId = this.academiaService.findId(userAccount.getId());
+				final Academia academia = this.academiaService.findOne(academiaId);
+				modelAndView.addObject("actor", academia);
+			} else {
+				final int adminId = this.adminitradorService.findId(userAccount.getId());
+				final Administrador administrador = this.adminitradorService.findOne(adminId);
+				modelAndView.addObject("actor", administrador);
+			}
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/editarDatos", method = RequestMethod.POST)
 	public ModelAndView editarDatosSave(final HttpServletRequest request) {
-		return null;
+
 		// Obtener los parámetros del formulario directamente desde HttpServletRequest
-		//		final String nombre = request.getParameter("nombre");
-		//		final String apellidos = request.getParameter("apellidos");
-		//		final String email = request.getParameter("email");
-		//		final String telefono = request.getParameter("telefono");
-		//		final String direccion = request.getParameter("direccion");
-		//		final String codigoPostal = request.getParameter("codigoPostal");
-		//		final String actorType = request.getParameter("actorType");
-		//
-		//		final String titular = request.getParameter("titular");
-		//		final String marca = request.getParameter("marca");
-		//		final String numero = request.getParameter("numero");
-		//		final String mesString = request.getParameter("mes");
-		//		final int mes = Integer.parseInt(mesString);
-		//		final String añoString = request.getParameter("año");
-		//		final int año = Integer.parseInt(añoString);
-		//		final String codigoCVV = request.getParameter("codigoCVV");
-		//
-		//		final String nombreComercial = request.getParameter("nombreComercial");
-		//
-		//		final Direccion dir = new Direccion();
-		//		final int codigoP = Integer.parseInt(codigoPostal);
-		//		dir.setDireccion(direccion);
-		//		dir.setCodigoPostal(codigoP);
-		//
-		//		final String username = request.getParameter("username");
-		//		final String password = request.getParameter("password");
-		//		final String encodedPassword = this.encodePasswordMD5(password);
-		//
-		//		final UserAccount userAccount = new UserAccount();
-		//		userAccount.setUsername(username);
-		//		userAccount.setPassword(encodedPassword);
-		//
-		//		// Crear un nuevo objeto Authority basado en el valor de actorType
-		//		final Authority authority = new Authority();
-		//		authority.setAuthority(actorType);
-		//
-		//		// Añadir la nueva autoridad a la colección de autoridades del usuario
-		//		userAccount.getAuthorities().add(authority);
-		//
-		//		// Realizar el registro del usuario aquí
-		//		final UserAccount savedUserAccount = this.userService.save(userAccount);
-		//		this.userService.flush();  // Asegurarte de que la transacción de la base de datos se complete
-		//
-		//
-		//		final ModelAndView modelAndView = new ModelAndView("redirect:/security/login.do");
-		//		return modelAndView;
+		final String nombre = request.getParameter("nombre");
+		final String apellidos = request.getParameter("apellidos");
+		final String email = request.getParameter("email");
+		final String telefono = request.getParameter("telefono");
+		final String direccion = request.getParameter("direccion");
+		final String codigoPostal = request.getParameter("codigoPostal");
+		int codigoP;
+		if (codigoPostal != null)
+			codigoP = Integer.parseInt(codigoPostal);
+		else
+			codigoP = 0;
 
-	}
-	private String encodePasswordMD5(final String password) {
-		try {
-			// Crear una instancia de MessageDigest para MD5
-			final MessageDigest md = MessageDigest.getInstance("MD5");
+		final String titular = request.getParameter("titular");
+		final String marca = request.getParameter("marca");
+		final String numero = request.getParameter("numero");
 
-			// Convertir la contraseña en bytes
-			final byte[] passwordBytes = password.getBytes();
+		final String mesString = request.getParameter("mes");
+		int mes;
+		if (mesString != null)
+			mes = Integer.parseInt(mesString);
+		else
+			mes = 0;
 
-			// Calcular el hash de la contraseña
-			final byte[] hashBytes = md.digest(passwordBytes);
+		final String añoString = request.getParameter("año");
+		int año;
+		if (añoString != null)
+			año = Integer.parseInt(añoString);
+		else
+			año = 0;
 
-			// Convertir el hash de bytes a una cadena hexadecimal
-			final StringBuilder sb = new StringBuilder();
-			for (final byte b : hashBytes)
-				sb.append(String.format("%02x", b));
+		final String codigoCVV = request.getParameter("codigoCVV");
+		final String nombreComercial = request.getParameter("nombreComercial");
 
-			return sb.toString();
-		} catch (final NoSuchAlgorithmException e) {
-			// Manejar la excepción si el algoritmo no está disponible
-			e.printStackTrace(); // Otra forma de manejar la excepción según tus requerimientos
-			return null;
-		}
+		final Direccion dir = new Direccion();
+		dir.setDireccion(direccion);
+		dir.setCodigoPostal(codigoP);
+
+		final UserAccount userAccount = LoginService.getPrincipal();
+		final Collection<Authority> authorities = userAccount.getAuthorities();
+		for (final Authority authority : authorities)
+			if (authority.getAuthority().equalsIgnoreCase("ALUMNO")) {
+				final int alumnoId = this.alumnoService.findId(userAccount.getId());
+				final Alumno alumno = this.alumnoService.findOne(alumnoId);
+
+				alumno.setNombre(nombre);
+				alumno.setApellidos(apellidos);
+				alumno.setEmail(email);
+				alumno.setTelefono(telefono);
+				alumno.setDireccion(dir);
+
+				if (titular != "") {
+					final TarjetaCredito tarjeta = this.tarjetaCreditoService.findByName(alumno.getTarjetaCredito().getTitular());
+					tarjeta.setNumero(numero);
+					tarjeta.setTitular(titular);
+					tarjeta.setMarca(marca);
+
+					if (año != 0)
+						tarjeta.setAño(año);
+
+					if (mes != 0)
+						tarjeta.setMes(mes);
+
+					tarjeta.setCodigoCVV(codigoCVV);
+					final TarjetaCredito tarjetaSaved = this.tarjetaCreditoService.update(tarjeta);
+					alumno.setTarjetaCredito(tarjetaSaved);
+				}
+
+				if (userAccount != null)
+					alumno.setCuentaUsuario(userAccount);
+				this.alumnoService.update(alumno);
+
+			} else if (authority.getAuthority().equalsIgnoreCase("ACADEMIA")) {
+				final int academiaId = this.academiaService.findId(userAccount.getId());
+				final Academia academia = this.academiaService.findOne(academiaId);
+
+				if (!nombreComercial.equalsIgnoreCase(""))
+					academia.setNombreComercial(nombreComercial);
+
+				academia.setNombre(nombre);
+				academia.setApellidos(apellidos);
+				academia.setEmail(email);
+				academia.setTelefono(telefono);
+				academia.setDireccion(dir);
+
+				if (userAccount != null)
+					academia.setCuentaUsuario(userAccount);
+				this.academiaService.update(academia);
+
+			} else {
+				final int adminId = this.adminitradorService.findId(userAccount.getId());
+				final Administrador administrador = this.adminitradorService.findOne(adminId);
+
+				administrador.setNombre(nombre);
+				administrador.setApellidos(apellidos);
+				administrador.setEmail(email);
+				administrador.setTelefono(telefono);
+				administrador.setDireccion(dir);
+
+				if (userAccount != null)
+					administrador.setCuentaUsuario(userAccount);
+				this.adminitradorService.update(administrador);
+			}
+
+		final ModelAndView modelAndView = new ModelAndView("redirect:/security/login.do");
+		return modelAndView;
+
 	}
 }

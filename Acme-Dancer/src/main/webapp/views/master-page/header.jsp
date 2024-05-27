@@ -89,17 +89,18 @@
 				</nav>
 			</li>
 
-			<li><a class="fNiv"> <spring:message
-						code="master.page.profile" /> (<security:authentication
+			<li>
+				<a class="fNiv"> <spring:message code="master.page.profile" /> (<security:authentication
 						property="principal.username" />)
-			</a>
+				</a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="profile/editarDatos.do"><spring:message
 								code="master.page.profile.editarDatos" /></a></li>
 					<li><a href="j_spring_security_logout"><spring:message
 								code="master.page.logout" /> </a></li>
-				</ul></li>
+				</ul>
+			</li>
 		</security:authorize>
 	</ul>
 </div>

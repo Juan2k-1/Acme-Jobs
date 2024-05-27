@@ -20,6 +20,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import services.AcademiaService;
+import services.ActorService;
 import services.AlumnoService;
 import services.TarjetaCreditoService;
 import services.UserAccountService;
@@ -42,6 +43,9 @@ public class ActorController extends AbstractController {
 
 	@Autowired
 	UserAccountService		userService;
+
+	@Autowired
+	ActorService			actorService;
 
 
 	public ActorController() {
@@ -69,12 +73,18 @@ public class ActorController extends AbstractController {
 		final String titular = request.getParameter("titular");
 		final String marca = request.getParameter("marca");
 		final String numero = request.getParameter("numero");
-		final String mesString = request.getParameter("mes");
-		final int mes = Integer.parseInt(mesString);
-		final String añoString = request.getParameter("año");
-		final int año = Integer.parseInt(añoString);
-		final String codigoCVV = request.getParameter("codigoCVV");
 
+		final String mesString = request.getParameter("mes");
+		int mes = 0;
+		if (!mesString.equalsIgnoreCase(""))
+			mes = Integer.parseInt(mesString);
+
+		final String añoString = request.getParameter("año");
+		int año = 0;
+		if (!añoString.equalsIgnoreCase(""))
+			año = Integer.parseInt(añoString);
+
+		final String codigoCVV = request.getParameter("codigoCVV");
 		final String nombreComercial = request.getParameter("nombreComercial");
 
 		final Direccion dir = new Direccion();
@@ -110,13 +120,18 @@ public class ActorController extends AbstractController {
 			alumno.setTelefono(telefono);
 			alumno.setDireccion(dir);
 
-			if (titular != null) {
+			if (titular != "") {
 				final TarjetaCredito tarjeta = new TarjetaCredito();
 				tarjeta.setNumero(numero);
 				tarjeta.setTitular(titular);
 				tarjeta.setMarca(marca);
-				tarjeta.setAño(año);
-				tarjeta.setMes(mes);
+
+				if (año != 0)
+					tarjeta.setAño(año);
+
+				if (mes != 0)
+					tarjeta.setMes(mes);
+
 				tarjeta.setCodigoCVV(codigoCVV);
 				final TarjetaCredito tarjetaSaved = this.tarjetaCreditoService.save(tarjeta);
 				alumno.setTarjetaCredito(tarjetaSaved);
@@ -129,7 +144,9 @@ public class ActorController extends AbstractController {
 		} else if (actorType.equalsIgnoreCase("ACADEMIA")) {
 			final Academia academia = new Academia();
 
-			academia.setNombreComercial(nombreComercial);
+			if (!nombreComercial.equalsIgnoreCase(""))
+				academia.setNombreComercial(nombreComercial);
+
 			academia.setNombre(nombre);
 			academia.setApellidos(apellidos);
 			academia.setEmail(email);

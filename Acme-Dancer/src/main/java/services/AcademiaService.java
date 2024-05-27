@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Academia;
+import domain.Actor;
 import repositories.AcademiaRepository;
 
 @Service
@@ -32,6 +34,35 @@ public class AcademiaService {
 
 		result = this.academiaRepository.save(academia);
 
+		return result;
+	}
+
+	public Academia update(final Academia academia) {
+		Assert.notNull(academia);
+		Academia result;
+
+		result = this.academiaRepository.findOne(academia.getId());
+
+		if (result != null) {
+			result.setNombre(academia.getNombre());
+			result.setApellidos(academia.getApellidos());
+			result.setEmail(academia.getEmail());
+			result.setDireccion(academia.getDireccion());
+			result.setCuentaUsuario(academia.getCuentaUsuario());
+			result.setNombreComercial(academia.getNombreComercial());
+			result.setComentarios(academia.getComentarios());
+
+			final Collection<Actor> publicadores = new ArrayList<>(academia.getPublicadores());
+			final Collection<Actor> subscriptores = new ArrayList<>(academia.getSubscriptores());
+
+			result.setPublicadores(publicadores);
+			result.setSubscriptores(subscriptores);
+
+			result.setCursos(academia.getCursos());
+			result.setTelefono(academia.getTelefono());
+
+			result = this.academiaRepository.save(result);
+		}
 		return result;
 	}
 
@@ -63,5 +94,10 @@ public class AcademiaService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public int findId(final int userAccountId) {
+		final int idAdmin = this.academiaRepository.findId(userAccountId);
+		return idAdmin;
 	}
 }
