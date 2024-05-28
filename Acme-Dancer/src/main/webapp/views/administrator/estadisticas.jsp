@@ -89,6 +89,21 @@
                     <td><spring:message code="administrator.media.subscribers.actor" /></td>
                     <td>${estadisticas['mediaSuscriptoresPorActor']}</td>
                 </tr>
+                
+                <tr>
+                    <td><spring:message code="administrator.min.reproductions" /></td>
+                    <td>${estadisticas['minReproducciones']}</td>
+                </tr>
+                
+                <tr>
+                    <td><spring:message code="administrator.media.reproductions" /></td>
+                    <td>${estadisticas['mediaReproducciones']}</td>
+                </tr>
+                
+                <tr>
+                    <td><spring:message code="administrator.max.reproductions" /></td>
+                    <td>${estadisticas['maxReproducciones']}</td>
+                </tr>
             </tbody>
         </table>
     </jstl:when>

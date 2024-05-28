@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
-import security.UserAccount;
 
 @Controller
 @RequestMapping("/welcome")
@@ -38,15 +37,18 @@ public class WelcomeController extends AbstractController {
 	// Index ------------------------------------------------------------------
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") String name) {
+	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
 		ModelAndView result;
 		SimpleDateFormat formatter;
 		String moment;
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
-		final UserAccount userAccount = LoginService.getPrincipal();
-		name = userAccount.getUsername();
+		//		final UserAccount userAccount = LoginService.getPrincipal();
+		//		if (userAccount != null)
+		//			name = userAccount.getUsername();
+		//		else
+		//			name = "John Doe";
 
 		result = new ModelAndView("welcome/index");
 		result.addObject("name", name);
