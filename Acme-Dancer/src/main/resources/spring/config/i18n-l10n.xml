@@ -24,10 +24,14 @@
 		<value>/views/welcome/messages</value>
 		
 		<value>/views/administrator/messages</value>
-		<value>/views/customer/messages</value>
+		<value>/views/actor/messages</value>
 		<value>/views/profile/messages</value>
 		
 		<value>/views/alumno/messages</value>
+		<value>/views/course/messages</value>
+		<value>/views/style/messages</value>
+		<value>/views/academy/messages</value>
+
 	</util:list>
 
 </beans>

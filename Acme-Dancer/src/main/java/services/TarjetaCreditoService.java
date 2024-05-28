@@ -55,6 +55,26 @@ public class TarjetaCreditoService {
 		return result;
 	}
 
+	public TarjetaCredito update(final TarjetaCredito tarjetaCredito) {
+		Assert.notNull(tarjetaCredito);
+		TarjetaCredito result;
+
+		result = this.tarjetaCreditoRepository.findOne(tarjetaCredito.getId());
+
+		if (result != null) {
+			result.setMarca(tarjetaCredito.getMarca());
+			result.setTitular(tarjetaCredito.getTitular());
+			result.setAño(tarjetaCredito.getAño());
+			result.setCodigoCVV(tarjetaCredito.getCodigoCVV());
+			result.setMes(tarjetaCredito.getMes());
+			result.setNumero(tarjetaCredito.getNumero());
+			result.setAlumno(tarjetaCredito.getAlumno());
+
+			result = this.tarjetaCreditoRepository.save(result);
+		}
+		return result;
+	}
+
 	public TarjetaCredito findByName(final String titular) {
 		Assert.isTrue(titular != "");
 

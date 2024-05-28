@@ -2,7 +2,6 @@
 package domain;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -40,7 +39,7 @@ public class Academia extends Actor {
 		return this.cursos;
 	}
 
-	public void setCursos(final List<Curso> cursos) {
+	public void setCursos(final Collection<Curso> cursos) {
 		this.cursos = cursos;
 	}
 
@@ -49,7 +48,7 @@ public class Academia extends Actor {
 		return this.tutoriales;
 	}
 
-	public void setTutoriales(final List<Tutorial> tutoriales) {
+	public void setTutoriales(final Collection<Tutorial> tutoriales) {
 		this.tutoriales = tutoriales;
 	}
 }

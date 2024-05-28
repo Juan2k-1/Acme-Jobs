@@ -15,4 +15,5 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 
 	@Query("SELECT a FROM Actor a WHERE a.nombre LIKE LOWER(CONCAT('%', ?1, '%'))")
 	Actor findByName(String nombre);
+
 }

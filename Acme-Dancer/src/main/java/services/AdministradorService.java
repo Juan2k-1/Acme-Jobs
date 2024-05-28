@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,33 @@ public class AdministradorService {
 		return result;
 	}
 
+	public Administrador update(final Administrador administrador) {
+		Assert.notNull(administrador);
+		Administrador result;
+
+		result = this.administradorRepository.findOne(administrador.getId());
+
+		if (result != null) {
+			result.setNombre(administrador.getNombre());
+			result.setApellidos(administrador.getApellidos());
+			result.setEmail(administrador.getEmail());
+			result.setDireccion(administrador.getDireccion());
+			result.setCuentaUsuario(administrador.getCuentaUsuario());
+			result.setComentarios(administrador.getComentarios());
+
+			final Collection<Actor> publicadores = new ArrayList<>(administrador.getPublicadores());
+			final Collection<Actor> subscriptores = new ArrayList<>(administrador.getSubscriptores());
+
+			result.setPublicadores(publicadores);
+			result.setSubscriptores(subscriptores);
+
+			result.setTelefono(administrador.getTelefono());
+
+			result = this.administradorRepository.save(result);
+		}
+		return result;
+	}
+
 	public void delete(final Administrador admin) {
 		Assert.notNull(admin);
 		Assert.isTrue(admin.getId() != 0);
@@ -72,6 +100,11 @@ public class AdministradorService {
 		return result;
 	}
 
+	public int findId(final int userAccountId) {
+		final int idAdmin = this.administradorRepository.findId(userAccountId);
+		return idAdmin;
+	}
+
 	public Map<String, Float> calcularEstadisticas(final Collection<Curso> cursos, final Collection<Academia> academias, final Collection<Tutorial> tutoriales, final Collection<RegisteredFor> registeredFor, final Collection<Actor> actores) {
 		// Inicializar el mapa para almacenar las estadísticas
 		final Map<String, Float> estadisticas = new HashMap<>();
@@ -90,6 +123,9 @@ public class AdministradorService {
 		estadisticas.put("maxTutorialesPorAcademia", (float) this.calcularMaxTutorialesPorAcademia(academias, tutoriales));
 		estadisticas.put("mediaComentariosPorActor", this.calcularMediaComentariosPorActor(actores));
 		estadisticas.put("mediaSuscriptoresPorActor", this.calcularMediaSuscriptoresPorActor(actores));
+		estadisticas.put("minReproducciones", (float) this.calcularMinReproducciones(tutoriales));
+		estadisticas.put("mediaReproducciones", this.calcularMediaReproducciones(tutoriales));
+		estadisticas.put("maxReproducciones", (float) this.calcularMaxReproducciones(tutoriales));
 
 		// Devolver el mapa de estadísticas
 		return estadisticas;
@@ -362,6 +398,47 @@ public class AdministradorService {
 
 		return maxTutoriales;
 	}
+
+	public int calcularMinReproducciones(final Collection<Tutorial> tutoriales) {
+		if (tutoriales.isEmpty())
+			return 0;
+
+		int minReproducciones = Integer.MAX_VALUE;
+		for (final Tutorial tutorial : tutoriales) {
+			final int reproducciones = tutorial.getNumReproducciones();
+			if (reproducciones < minReproducciones)
+				minReproducciones = reproducciones;
+		}
+
+		return minReproducciones == Integer.MAX_VALUE ? 0 : minReproducciones;
+	}
+
+	public float calcularMediaReproducciones(final Collection<Tutorial> tutoriales) {
+		if (tutoriales.isEmpty())
+			return 0;
+
+		int sumaReproducciones = 0;
+		for (final Tutorial tutorial : tutoriales)
+			sumaReproducciones += tutorial.getNumReproducciones();
+
+		return (float) sumaReproducciones / tutoriales.size();
+	}
+
+	public int calcularMaxReproducciones(final Collection<Tutorial> tutoriales) {
+		if (tutoriales.isEmpty())
+			return 0;
+
+		int maxReproducciones = 0;
+		for (final Tutorial tutorial : tutoriales) {
+			final int reproducciones = tutorial.getNumReproducciones();
+			if (reproducciones > maxReproducciones)
+				maxReproducciones = reproducciones;
+		}
+
+		return maxReproducciones;
+	}
+
+	//---------------------------------------- REQUISITOS ADMINISTRADOR NIVEL A ---------------------------------------------------------------//
 
 	public float calcularMediaComentariosPorActor(final Collection<Actor> actores) {
 		int totalComentarios = 0;

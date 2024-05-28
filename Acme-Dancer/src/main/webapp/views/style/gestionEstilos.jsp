@@ -18,25 +18,23 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p>
-	<spring:message code="profile.action.2" />
-</p>
-<form:form modelAttribute="calculator">
-	<form:input path="x" />
-	<form:errors path="x" cssClass="error" />
-	<br />
-	<form:input path="y" />
-	<form:errors path="y" cssClass="error" />
-	<form:select path="operator">
-		<form:option value="+" />
-		<form:option value="-" />
-		<form:option value="*" />
-		<form:option value="/" />
-	</form:select>
-	<form:errors path="operator" cssClass="error" />
-	<br />
-	<hr />
-	<jstl:out value="${calculator.result}" />
-	<br />
-	<input type="submit" value="<spring:message code='profile.compute'/>" />
-</form:form>
+<!-- Listado de estilos existentes -->
+<table class="styles-table">
+    <thead>
+        <tr>
+            <th><spring:message code="estilos.nombre"/></th>
+            <th><spring:message code="estilos.cursos"/></th>
+        </tr>
+    </thead>
+    <tbody>
+        <jstl:forEach var="estilos" items="${estilos}">
+            <tr>
+                <td>${estilos.nombre}</td>
+				<td><jstl:forEach var="cursos" items="${estilos.cursos}">
+				  ${cursos.titulo}  
+				</jstl:forEach></td>
+            </tr>
+        </jstl:forEach>
+
+    </tbody>
+</table>

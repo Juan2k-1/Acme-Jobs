@@ -1,5 +1,5 @@
 <%--
- * action-1.jsp
+ * action-2.jsp
  *
  * Copyright (C) 2018 Universidad de Sevilla
  * 
@@ -18,18 +18,21 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p>
-	<spring:message code="customer.action.1" />
-</p>
-<display:table pagesize="5" name="shouts" id="row"
-	requestURI="customer/action-1.do">
-	<display:column property="username" titleKey="customer.username" />
-	<display:column titleKey="customer.shout">
-		<strong> <a href="${row.link}"> <jstl:out
-					value="${row.link}" />
-		</a>
-		</strong>
-		<br />
-		<jstl:out value="${row.text}" />
-	</display:column>
-</display:table>
+<!-- Listado de cursos existentes -->
+<table class="styles-table">
+    <thead>
+        <tr>
+            <th><spring:message code="cursos.nombre"/></th>
+            <th><spring:message code="cursos.academia"/></th>
+        </tr>
+    </thead>
+    <tbody>
+        <jstl:forEach var="cursos" items="${cursos}">
+            <tr>
+                <td><a href="course/DatosCursos.do?id=${cursos.id}">${cursos.titulo}</a></td>
+                <td>${cursos.academia.nombreComercial}</td>   
+            </tr>
+        </jstl:forEach>
+
+    </tbody>
+</table>

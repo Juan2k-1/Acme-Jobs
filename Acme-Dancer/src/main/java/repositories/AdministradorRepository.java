@@ -15,4 +15,7 @@ public interface AdministradorRepository extends JpaRepository<Administrador, In
 
 	@Query("SELECT a FROM Administrador a WHERE a.nombre LIKE LOWER(CONCAT('%', ?1, '%'))")
 	Administrador findByName(String nombre);
+
+	@Query("SELECT a.id FROM Administrador a WHERE a.cuentaUsuario.id = ?1")
+	int findId(int userAccountId);
 }

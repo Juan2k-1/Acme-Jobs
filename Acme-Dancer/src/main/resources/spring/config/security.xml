@@ -45,15 +45,18 @@
 
 		<security:intercept-url pattern="/administrator/**" access="hasRole('ADMIN')"/>
 		
+		<security:intercept-url pattern="/course/**" access="permitAll"/>
+		<security:intercept-url pattern="/style/**" access="permitAll"/>
+		<security:intercept-url pattern="/academy/**" access="permitAll"/>
+		
 		<security:intercept-url pattern="/academy/action-1.do" access="hasRole('ACADEMIA')" /> 
 		<security:intercept-url pattern="/academy/action-2.do" access="hasRole('ACADEMIA')" />
 		
 		<security:intercept-url pattern="/alumno/misSolicitudes.do" access="hasRole('ALUMNO')" /> 
 		<security:intercept-url pattern="/alumno/solicitarCurso.do" access="hasRole('ALUMNO')" />
 
-		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/profile/editarDatos.do" access="isAuthenticated()" /> 
+
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
