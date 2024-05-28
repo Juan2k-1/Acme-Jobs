@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Alumno;
 import domain.RegisteredFor;
 import repositories.RegisteredForRepository;
 
@@ -53,4 +54,19 @@ public class RegisteredForService {
 
 		return result;
 	}
+	
+	public int findIDAlumno(int userAccount) {
+		return this.registeredForRepository.findId(userAccount);
+	}
+	
+	public Alumno findAlumno(int userAccountId) {
+		return this.registeredForRepository.findAlumno(userAccountId);
+	}
+	
+	public Collection<RegisteredFor> findByAlumnoId(int alumnoId) {
+		Collection<RegisteredFor> result;
+		result = this.registeredForRepository.findByAlumnoId(alumnoId);
+		return result;
+	}
+
 }
