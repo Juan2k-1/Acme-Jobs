@@ -33,6 +33,17 @@
                 <td>${tutoriales.titulo}</td>
                 <td>${tutoriales.descripcion}</td>
                 <td>${tutoriales.numReproducciones}</td>
+                <security:authorize access="hasRole('ACADEMIA')">
+                <td>
+                    <a href="tutorial/editarTutorial.do?id=${tutoriales.id}">
+                    	<spring:message code="administrator.edit"/>
+                    </a>
+                    | <a href="administrator/eliminarEstilo.do?id=${estilo.id}" 
+                    onclick="return confirm('<spring:message code="administrator.confirm.delete"/>');">
+                    	<spring:message code="administrator.delete"/>
+                    </a>
+                </td>
+                </security:authorize>
             </tr>
         </jstl:forEach>
 

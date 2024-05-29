@@ -13,7 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Academia;
 import domain.Curso;
 import services.AcademiaService;
-import services.CursoService;;
+import services.CursoService;
+import services.TutorialService;;
 
 @Controller
 @RequestMapping("/academy")
@@ -21,7 +22,11 @@ public class AcademyController extends AbstractController {
 
 	@Autowired
 	private AcademiaService	academiaService;
+	@Autowired
 	private CursoService	cursoService;
+
+	@Autowired
+	private TutorialService	tutorialService;
 
 
 	@RequestMapping(value = "/gestionAcademia", method = RequestMethod.GET)

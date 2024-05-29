@@ -50,6 +50,19 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="academia2" />
+		<property name="password"
+			value="21100e9e60400b9704419459ec2babfd" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ACADEMIA" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	<!-- Other domain beans come here -->
 	<bean id="actor1" class="domain.Alumno">
@@ -111,6 +124,21 @@
 			</bean>
 		</property>
 		<property name="cuentaUsuario" ref="userAccount3" />
+	</bean>
+	
+	<bean id="actor4" class="domain.Academia">
+		<property name="nombre" value="Pepe" />
+		<property name="apellidos" value="Martos" />
+		<property name="nombreComercial" value="Huelva_Sur" />
+		<property name="email" value="huelva_sur@gmail.com" />
+		<property name="telefono" value="+34123498748" />
+		<property name="direccion">
+			<bean class="domain.Direccion">
+				<property name="direccion" value="Calle Fariña 11" />
+				<property name="codigoPostal" value="54323" />
+			</bean>
+		</property>
+		<property name="cuentaUsuario" ref="userAccount4" />
 	</bean>
 	
 	<!---Entidad Alumno 
@@ -204,6 +232,18 @@
 		</property>
 		<property name="academia" ref="actor3" />
 		<property name="numReproducciones" value="0" />
+	</bean>
+	
+	<bean id="tutorial2" class="domain.Tutorial">
+		<property name="titulo" value="tutorial1" />
+		<property name="descripcion" value="tutorial de ejemplo 2" />
+		<property name="video">
+			<list>
+				<value>video1</value>
+			</list>
+		</property>
+		<property name="academia" ref="actor4" />
+		<property name="numReproducciones" value="3" />
 	</bean>
 
 	<!---Entidad Comentario -->

@@ -3,12 +3,21 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+
 <tiles-definitions>
-	
-	<definition name="tutorial/gestionTutoriales" extends="master.page">
+
+	<definition name="tutorial/mostrarTutoriales"
+		extends="master.page">
 		<put-attribute name="title" value="Lista Tutoriales" />
-		<put-attribute name="body" value="/views/tutorial/gestionTutoriales.jsp" />
+		<put-attribute name="body"
+			value="/views/tutorial/mostrarTutoriales.jsp" />
+
 	</definition>
-		
+
+	<definition name="tutorial/editarTutorial"
+		extends="master.page">
+		<put-attribute name="title" value="Editar Tutorial" />
+		<put-attribute name="body"
+			value="/views/tutorial/editarTutorial.jsp" />
+	</definition>
 </tiles-definitions>
