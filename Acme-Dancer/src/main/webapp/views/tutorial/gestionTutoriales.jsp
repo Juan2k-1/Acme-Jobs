@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-        <jstl:forEach var="estilos" items="${tutoriales}">
+        <jstl:forEach var="tutoriales" items="${tutoriales}">
             <tr>
                 <td>${tutoriales.titulo}</td>
                 <td>${tutoriales.descripcion}</td>

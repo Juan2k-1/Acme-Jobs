@@ -24,6 +24,8 @@ public class TutorialController {
 	public ModelAndView listStyles() {
 		final ModelAndView result = new ModelAndView("tutorial/gestionTutoriales");
 		final Collection<Tutorial> tutoriales = this.tutorialService.findAll();
+		for (final Tutorial o : tutoriales)
+			System.out.println(o.getTitulo());
 		result.addObject("tutoriales", tutoriales);
 		return result;
 	}
