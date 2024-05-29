@@ -68,4 +68,18 @@ public class TutorialService {
 
 		return result;
 	}
+
+	public Tutorial findByAcademia(final int idAcademia) {
+		Assert.isTrue(idAcademia != 0);
+
+		Tutorial result;
+
+		result = this.tutorialRepository.findByAcademia(idAcademia);
+		Assert.notNull(result);
+		final int reproducciones = result.getNumReproducciones();
+		result.setNumReproducciones(reproducciones);
+
+		return result;
+
+	}
 }

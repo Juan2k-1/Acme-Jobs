@@ -15,4 +15,7 @@ public interface TutorialRepository extends JpaRepository<Tutorial, Integer> {
 
 	@Query("SELECT t FROM Tutorial t WHERE t.titulo LIKE LOWER(CONCAT('%', ?1, '%'))")
 	Tutorial findByTitle(String titulo);
+
+	@Query("SELECT t FROM Tutorial t WHERE t.academia.id = ?1")
+	Tutorial findByAcademia(int idAcademia);
 }

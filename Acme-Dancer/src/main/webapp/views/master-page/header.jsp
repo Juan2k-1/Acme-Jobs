@@ -40,7 +40,7 @@
 						code="master.page.academy" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="academy/action-1.do"><spring:message
+					<li><a href="tutorial/gestionTutoriales.do"><spring:message
 								code="master.page.academy.action.1" /></a></li>
 					<li><a href="academy/action-2.do"><spring:message
 								code="master.page.academy.action.2" /></a></li>
