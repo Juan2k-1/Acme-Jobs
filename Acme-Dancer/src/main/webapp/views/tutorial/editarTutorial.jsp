@@ -22,6 +22,11 @@
             <form:input path="descripcion" id="descripcion" />
         </div>
         
+         <div>
+            <label for="video"><spring:message code="tutorial.edit.description"/></label>
+            <form:input path="video" id="video" />
+        </div>
+        
         <div>
             <input type="submit" value="<spring:message code="tutorial.edit.save"/>"/>
         </div>
