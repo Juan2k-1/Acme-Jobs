@@ -36,8 +36,6 @@ public class TutorialController {
 		final UserAccount userAccount = LoginService.getPrincipal();
 		final int academia_id = this.academiaService.findId(userAccount.getId());
 		final Collection<Tutorial> tutoriales = this.tutorialService.findByAcademia(academia_id);
-		for (final Tutorial o : tutoriales)
-			System.out.println(o.getTitulo());
 		result.addObject("tutoriales", tutoriales);
 		return result;
 	}
@@ -51,11 +49,9 @@ public class TutorialController {
 		final int academia_id = this.academiaService.findId(userAccount.getId());
 		final Academia academia = this.academiaService.findOne(academia_id);
 
-		if (bindingResult.hasErrors()) {
-			System.out.println(bindingResult.getAllErrors());
+		if (bindingResult.hasErrors())
 			result = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
-		} else {
-			System.out.println(tutorial.getNumReproducciones());
+		else {
 			tutorial.setAcademia(academia);
 			this.tutorialService.save(tutorial);
 			this.tutorialService.flush();

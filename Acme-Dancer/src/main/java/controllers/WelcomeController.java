@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,18 +39,17 @@ public class WelcomeController extends AbstractController {
 	// Index ------------------------------------------------------------------
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
+	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") String name) {
 		ModelAndView result;
 		SimpleDateFormat formatter;
 		String moment;
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
-		//		final UserAccount userAccount = LoginService.getPrincipal();
-		//		if (userAccount != null)
-		//			name = userAccount.getUsername();
-		//		else
-		//			name = "John Doe";
+
+		SecurityContext context;
+		context = SecurityContextHolder.getContext();
+		name = context.getAuthentication().getName();
 
 		result = new ModelAndView("welcome/index");
 		result.addObject("name", name);
