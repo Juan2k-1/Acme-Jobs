@@ -1,12 +1,13 @@
 
 package controllers;
 
-import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,16 +43,24 @@ public class TutorialController {
 	}
 
 	@RequestMapping(value = "/guardarTutorial", method = RequestMethod.POST)
-	public ModelAndView guardarEstilo(@ModelAttribute("tutorial") final Tutorial tutorial) {
+	public ModelAndView guardarEstilo(@Valid final Tutorial tutorial, final BindingResult bindingResult) {
+		final ModelAndView result;
+
+		// Por que si le pasamos como atributo hidden el campo academia al controlador, no funciona
 		final UserAccount userAccount = LoginService.getPrincipal();
 		final int academia_id = this.academiaService.findId(userAccount.getId());
 		final Academia academia = this.academiaService.findOne(academia_id);
-		tutorial.setAcademia(academia);
-		final Collection<String> video = new ArrayList<String>();
-		video.add("VideoCambio");
-		tutorial.setVideo(video);
-		this.tutorialService.save(tutorial);
-		final ModelAndView result = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+
+		if (bindingResult.hasErrors()) {
+			System.out.println(bindingResult.getAllErrors());
+			result = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+		} else {
+			System.out.println(tutorial.getNumReproducciones());
+			tutorial.setAcademia(academia);
+			this.tutorialService.save(tutorial);
+			this.tutorialService.flush();
+			result = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+		}
 		return result;
 	}
 

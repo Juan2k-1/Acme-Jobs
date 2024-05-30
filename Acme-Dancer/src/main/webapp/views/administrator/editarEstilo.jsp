@@ -12,6 +12,9 @@
     <h2><spring:message code="administrator.edit.style"/></h2>
     <form:form method="POST" action="administrator/guardarEstilo.do" modelAttribute="estilo">
         <form:hidden path="id"/>
+        <form:hidden path="version" />
+        <form:hidden path="imagen" />
+        <form:hidden path="video" />
         <div>
             <label for="nombre"><spring:message code="administrator.name"/></label>
             <form:input path="nombre" id="nombre"/>

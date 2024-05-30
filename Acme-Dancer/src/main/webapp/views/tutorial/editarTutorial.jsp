@@ -12,6 +12,8 @@
     <h2><spring:message code="tutorial.edit.style"/></h2>
     <form:form method="POST" action="tutorial/guardarTutorial.do" modelAttribute="tutorial">
         <form:hidden path="id"/>
+        <form:hidden path="version" />
+        <form:hidden path="numReproducciones"/>
         <div>
             <label for="nombre"><spring:message code="tutorial.edit.title"/></label>
             <form:input path="titulo" id="nombre"/>

@@ -235,7 +235,7 @@
 	</bean>
 	
 	<bean id="tutorial2" class="domain.Tutorial">
-		<property name="titulo" value="tutorial1" />
+		<property name="titulo" value="tutorial2" />
 		<property name="descripcion" value="tutorial de ejemplo 2" />
 		<property name="video">
 			<list>
