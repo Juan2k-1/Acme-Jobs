@@ -27,7 +27,7 @@ public class TutorialService {
 
 	public Tutorial save(final Tutorial tutorial) {
 		Assert.notNull(tutorial);
-
+		Assert.notNull(tutorial.getAcademia());
 		Tutorial result;
 
 		result = this.tutorialRepository.save(tutorial);
@@ -67,5 +67,19 @@ public class TutorialService {
 		result.setNumReproducciones(reproducciones);
 
 		return result;
+	}
+
+	public Collection<Tutorial> findByAcademia(final int idAcademia) {
+		Assert.isTrue(idAcademia != 0);
+
+		Collection<Tutorial> result;
+
+		result = this.tutorialRepository.findByAcademia(idAcademia);
+		Assert.notNull(result);
+		return result;
+
+	}
+	public void flush() {
+		this.tutorialRepository.flush();
 	}
 }

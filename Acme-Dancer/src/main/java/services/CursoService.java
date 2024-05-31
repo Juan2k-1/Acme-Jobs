@@ -65,10 +65,10 @@ public class CursoService {
 		return result;
 	}
 
-	public Curso findByEstilo(final String estilo) {
+	public Collection<Curso> findByEstilo(final String estilo) {
 		Assert.isTrue(estilo != "");
 
-		Curso result;
+		Collection<Curso> result;
 
 		result = this.cursoRepository.findByEstilo(estilo);
 		Assert.notNull(result);

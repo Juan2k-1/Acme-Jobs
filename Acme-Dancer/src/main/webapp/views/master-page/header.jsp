@@ -42,6 +42,8 @@
 					<li class="arrow"></li>
 					<li><a href="academy/CMCurso.do"><spring:message
 								code="master.page.academy.CMCurso" /></a></li>
+					<li><a href="tutorial/mostrarTutoriales.do"><spring:message
+								code="master.page.academy.action.1" /></a></li>
 					<li><a href="academy/action-2.do"><spring:message
 								code="master.page.academy.action.2" /></a></li>
 				</ul></li>
@@ -51,9 +53,9 @@
 			<li><a class="fNiv"><spring:message code="master.page.alumn" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="alumn/action-1.do"><spring:message
+					<li><a href="alumno/misSolicitudes.do"><spring:message
 								code="master.page.alumn.action.1" /></a></li>
-					<li><a href="alumn/action-2.do"><spring:message
+					<li><a href="alumno/solicitarCurso.do"><spring:message
 								code="master.page.alumn.action.2" /></a></li>
 				</ul></li>
 		</security:authorize>

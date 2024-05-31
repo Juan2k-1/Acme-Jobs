@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="tutorial/mostrarTutoriales" extends="master.page">
+		<put-attribute name="title" value="List of Tutorials" />
+		<put-attribute name="body" value="/views/tutorial/mostrarTutoriales.jsp" />
+	</definition>
+	<definition name="tutorial/editarTutorial" extends="master.page">
+		<put-attribute name="title" value="Edit Tutorial" />
+		<put-attribute name="body" value="/views/tutorial/editarTutorial.jsp" />
+	</definition>
+		
+</tiles-definitions>

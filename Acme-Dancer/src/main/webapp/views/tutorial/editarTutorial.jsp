@@ -9,24 +9,28 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <div>
-    <h2><spring:message code="administrator.edit.style"/></h2>
-    <form:form method="POST" action="administrator/guardarEstilo.do" modelAttribute="estilo">
+    <h2><spring:message code="tutorial.edit.style"/></h2>
+    <form:form method="POST" action="tutorial/guardarTutorial.do" modelAttribute="tutorial">
         <form:hidden path="id"/>
         <form:hidden path="version" />
-        <form:hidden path="imagen" />
-        <form:hidden path="video" />
+        <form:hidden path="numReproducciones"/>
         <div>
-            <label for="nombre"><spring:message code="administrator.name"/></label>
-            <form:input path="nombre" id="nombre"/>
+            <label for="nombre"><spring:message code="tutorial.edit.title"/></label>
+            <form:input path="titulo" id="nombre"/>
         </div>
         
         <div>
-            <label for="descripcion"><spring:message code="administrator.description"/></label>
+            <label for="descripcion"><spring:message code="tutorial.edit.description"/></label>
             <form:input path="descripcion" id="descripcion" />
         </div>
         
+         <div>
+            <label for="video"><spring:message code="tutorial.edit.description"/></label>
+            <form:input path="video" id="video" />
+        </div>
+        
         <div>
-            <input type="submit" value="<spring:message code="administrator.save.changes"/>"/>
+            <input type="submit" value="<spring:message code="tutorial.edit.save"/>"/>
         </div>
     </form:form>
 </div>

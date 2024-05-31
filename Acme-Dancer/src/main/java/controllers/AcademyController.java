@@ -23,6 +23,7 @@ public class AcademyController extends AbstractController {
 
 	@Autowired
 	private AcademiaService	academiaService;
+	@Autowired
 	private CursoService	cursoService;
 
 

@@ -198,7 +198,7 @@ public class ProfileController extends AbstractController {
 				this.adminitradorService.update(administrador);
 			}
 
-		final ModelAndView modelAndView = new ModelAndView("redirect:/security/login.do");
+		final ModelAndView modelAndView = new ModelAndView("redirect:/welcome/index.do");
 		return modelAndView;
 
 	}

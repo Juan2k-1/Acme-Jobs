@@ -1,6 +1,8 @@
 
 package repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,6 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
 	Curso findByName(String titulo);
 
 	@Query("select c from Curso c where c.estilo like LOWER(CONCAT('%', ?1, '%'))")
-	Curso findByEstilo(String estilo);
+	Collection<Curso> findByEstilo(String estilo);
 
 }

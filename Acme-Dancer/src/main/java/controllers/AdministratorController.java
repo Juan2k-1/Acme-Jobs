@@ -113,7 +113,10 @@ public class AdministratorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/guardarEstilo", method = RequestMethod.POST)
-	public ModelAndView guardarEstilo(@ModelAttribute("estilo") final Estilo estilo) {
+	public ModelAndView guardarEstilo(@Valid final Estilo estilo) {
+
+		final Collection<Curso> cursos = this.cursoService.findByEstilo(estilo.getNombre());
+		estilo.setCursos(cursos);
 		this.estiloService.save(estilo);
 		final ModelAndView result = new ModelAndView("redirect:/administrator/gestionEstilos.do");
 		return result;
