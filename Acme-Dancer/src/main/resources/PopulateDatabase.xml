@@ -227,9 +227,8 @@
 		<property name="descripcion" value="tutorial de ejemplo" />
 		<property name="video">
 			<list>
-				<value>video1</value>
-				<value>video3</value>
-				<value>video6</value>
+				<value>https://www.youtube.com/embed/JjrohCtOw7w?si=DzHzcPKWj7O61B2E</value>
+				<value>https://www.youtube.com/embed/IbBBYxbtz-w?si=zNrj7K0DBvxRqbGd</value>
 			</list>
 		</property>
 		<property name="academia" ref="actor3" />

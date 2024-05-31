@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Academia;
-import domain.Estilo;
 import domain.Tutorial;
 import security.LoginService;
 import security.UserAccount;
@@ -113,6 +112,18 @@ public class TutorialController {
 		tutorial.setNumReproducciones(0);
 		this.tutorialService.save(tutorial);
 		return new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+	}
+
+	@RequestMapping(value = "/verTutorial", method = RequestMethod.GET)
+	public ModelAndView verTutorial(@RequestParam("id") final int id) {
+
+		final Tutorial tutorial = this.tutorialService.findOne(id);
+		final ModelAndView result = new ModelAndView("tutorial/verTutorial");
+		final int numReproducciones = tutorial.getNumReproducciones() + 1;
+		tutorial.setNumReproducciones(numReproducciones);
+		this.tutorialService.save(tutorial);
+		result.addObject("tutorial", tutorial);
+		return result;
 	}
 
 }
