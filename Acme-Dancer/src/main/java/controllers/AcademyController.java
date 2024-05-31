@@ -55,7 +55,7 @@ public class AcademyController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/CMCurso", method = RequestMethod.GET)
+	@RequestMapping(value = "/editarCurso", method = RequestMethod.GET)
 	public ModelAndView EditarCurso() {
 		final ModelAndView result = new ModelAndView("academy/CMCurso");
 		final UserAccount userAccount = LoginService.getPrincipal();

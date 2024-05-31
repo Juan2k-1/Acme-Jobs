@@ -54,6 +54,8 @@
 		<security:intercept-url pattern="/tutorial/mostrarTutoriales.do" access="hasRole('ACADEMIA')" /> 
 		<security:intercept-url pattern="/tutorial/editarTutorial.do" access="hasRole('ACADEMIA')" />
 		<security:intercept-url pattern="/tutorial/guardarTutorial.do" access="hasRole('ACADEMIA')" />
+		<security:intercept-url pattern="/tutorial/eliminarTutorial.do" access="hasRole('ACADEMIA')" />
+		<security:intercept-url pattern="/tutorial/crearTutorial.do" access="hasRole('ACADEMIA')" />
 		
 		<security:intercept-url pattern="/alumno/misSolicitudes.do" access="hasRole('ALUMNO')" /> 
 		<security:intercept-url pattern="/alumno/solicitarCurso.do" access="hasRole('ALUMNO')" />

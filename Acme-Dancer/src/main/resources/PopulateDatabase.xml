@@ -228,6 +228,8 @@
 		<property name="video">
 			<list>
 				<value>video1</value>
+				<value>video3</value>
+				<value>video6</value>
 			</list>
 		</property>
 		<property name="academia" ref="actor3" />
