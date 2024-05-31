@@ -35,8 +35,7 @@
 						${tutoriales.titulo} </a></td>
 				<td><a href="tutorial/verTutorial.do?id=${tutoriales.id}">
 						${tutoriales.descripcion} </a></td>
-				<td><a href="tutorial/verTutorial.do?id=${tutoriales.id}">
-						${tutoriales.numReproducciones} </a></td>
+				<td>${tutoriales.numReproducciones} </td>
 				<security:authorize access="hasRole('ACADEMIA')">
 					<td><a href="tutorial/editarTutorial.do?id=${tutoriales.id}">
 							<spring:message code="administrator.edit" />

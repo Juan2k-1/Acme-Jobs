@@ -46,7 +46,6 @@ public class TutorialController {
 	public ModelAndView guardarEstilo(@Valid final Tutorial tutorial, final BindingResult bindingResult) {
 		final ModelAndView result;
 
-		// Por que si le pasamos como atributo hidden el campo academia al controlador, no funciona
 		final UserAccount userAccount = LoginService.getPrincipal();
 		final int academia_id = this.academiaService.findId(userAccount.getId());
 		final Academia academia = this.academiaService.findOne(academia_id);
