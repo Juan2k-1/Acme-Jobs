@@ -12,33 +12,41 @@
 	<h2>
 		<spring:message code="curso.edit" />
 	</h2>
-	<form:form method="POST" action="course/guardarCurso.do"
-		modelAttribute="curso">
+	<form:form method="POST" action="course/guardarCurso.do" modelAttribute="curso">
 		<form:hidden path="id" />
 		<form:hidden path="version" />
 		<div>
 			<label for="titulo"><spring:message code="curso.edit.title" /></label>
-			<form:input path="titulo" id="nombre" />
+			<input type="text" id="titulo" name="titulo" value="${curso.titulo}" required />
 		</div>
-		<div>
+		
+		<div>			
 			<label for="nivel"><spring:message code="curso.edit.nivel" /></label>
-			<input type="text" id="nivel" name="nivel" required />
+			<select id="nivel" name="nivel">
+				<option value="PRINCIPIANTE" ${curso.nivel == 'PRINCIPIANTE' ? 'selected' : ''}>PRINCIPIANTE</option>
+				<option value="INTERMEDIO" ${curso.nivel == 'INTERMEDIO' ? 'selected' : ''}>INTERMEDIO</option>
+				<option value="AVANZADO" ${curso.nivel == 'AVANZADO' ? 'selected' : ''}>AVANZADO</option>
+				<option value="PROFESIONAL" ${curso.nivel == 'PROFESIONAL' ? 'selected' : ''}>PROFESIONAL</option>
+			</select>
 		</div>
 
 		<div>
-			<label for="fechaInicio" ><spring:message
-					code="curso.edit.fechini" /></label>
-			<input type="text" id="fechaInicio" name="fechaInicio" required />
+			<label for="fechaInicio" ><spring:message code="curso.edit.fechini" /></label>
+			<input type="date" id="fechaInicio" name="fechaInicio" 
+			value='<fmt:formatDate value="${curso.fechaInicio}" pattern="yyyy-MM-dd"/>' required />
 		</div>
+		
 		<div>
-			<label for="fechaFin"><spring:message
-					code="curso.edit.fechaFin" /></label>
-			<input type="text" id="fechaFin" name="fechaFin" required />
+			<label for="fechaFin"><spring:message code="curso.edit.fechaFin" /></label>
+			<input type="date" id="fechaFin" name="fechaFin" 
+			value='<fmt:formatDate value="${curso.fechaFin}" pattern="yyyy-MM-dd"/>' required />
 		</div>
+		
 		<div>
 			<label for="hora"><spring:message code="curso.edit.hora" /></label>
-			<form:input path="hora" id="hora" />
+			<input type="text" id="hora" name="hora" value="${curso.hora}" required />
 		</div>
+		
 		<div>
 			<label for="estilo"><spring:message code="curso.edit.estilo" />:</label>
 			<select id="estilo" name="estilo">

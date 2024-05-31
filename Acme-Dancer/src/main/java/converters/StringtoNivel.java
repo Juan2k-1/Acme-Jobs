@@ -1,6 +1,7 @@
 
 package converters;
 
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,8 +9,9 @@ import domain.Nivel;
 
 @Component
 @Transactional
-public class StringtoNivel {
+public class StringtoNivel implements Converter<String, Nivel> {
 
+	@Override
 	public Nivel convert(final String source) {
 		// Lógica para convertir el String a un valor del enumerado Nivel
 		switch (source.toUpperCase()) {

@@ -13,16 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class StringtoDate implements Converter<String, Date> {
 
-	private static final String		DATE_FORMAT	= "yyyy-MM-dd";
-	private final SimpleDateFormat	dateFormat	= new SimpleDateFormat(StringtoDate.DATE_FORMAT);
+	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
 	@Override
 	public Date convert(final String source) {
 		try {
-			return this.dateFormat.parse(source);
+			final Date date = this.dateFormat.parse(source);
+			return date;
 		} catch (final ParseException e) {
-			throw new IllegalArgumentException("Invalid date format. Please use the pattern " + StringtoDate.DATE_FORMAT, e);
+			throw new IllegalArgumentException("Invalid date format. Please use the pattern ", e);
 		}
 	}
 }

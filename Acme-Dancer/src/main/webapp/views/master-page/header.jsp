@@ -44,8 +44,8 @@
 								code="master.page.academy.CMCurso" /></a></li>
 					<li><a href="tutorial/mostrarTutoriales.do"><spring:message
 								code="master.page.academy.action.1" /></a></li>
-					<li><a href="academy/action-2.do"><spring:message
-								code="master.page.academy.action.2" /></a></li>
+					<li><a href="academy/gestionSolicitudes.do"><spring:message
+								code="master.page.academy.gestionSolicitudes" /></a></li>
 				</ul></li>
 		</security:authorize>
 

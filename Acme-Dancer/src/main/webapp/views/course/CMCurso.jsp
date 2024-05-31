@@ -22,8 +22,7 @@
 <table class="styles-table">
     <thead>
 
-        <tr>
-        
+        <tr>     
             <th><spring:message code="curso.nombre"/></th>
             <th><spring:message code="curso.nivel"/></th>
             <th><spring:message code="curso.inicio"/></th>
@@ -50,3 +49,52 @@
             </jstl:forEach>
     </tbody>
 </table>
+
+<!-- Formulario para crear un nuevo estilo -->
+<h2>
+	<spring:message code="course.create.new.course" />
+</h2>
+<form:form method="POST" action="course/crearCurso.do" modelAttribute="nuevoCurso">
+		<div>
+			<label for="titulo"><spring:message code="curso.create.title" /></label>
+			<input type="text" id="titulo" name="titulo" required />
+		</div>
+		
+		<div>			
+			<label for="nivel"><spring:message code="curso.create.nivel" /></label>
+			<select id="nivel" name="nivel">
+				<option value="PRINCIPIANTE">PRINCIPIANTE</option>
+				<option value="INTERMEDIO">INTERMEDIO</option>
+				<option value="AVANZADO">AVANZADO</option>
+				<option value="PROFESIONAL">PROFESIONAL</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="fechaInicio" ><spring:message code="curso.create.fechini" /></label>
+			<input type="date" id="fechaInicio" name="fechaInicio" required />
+		</div>
+		
+		<div>
+			<label for="fechaFin"><spring:message code="curso.create.fechaFin" /></label>
+			<input type="date" id="fechaFin" name="fechaFin" required />
+		</div>
+		
+		<div>
+			<label for="hora"><spring:message code="curso.create.hora" /></label>
+			<input type="text" id="hora" name="hora" required />
+		</div>
+		
+		<div>
+			<label for="estilo"><spring:message code="curso.create.estilo" />:</label>
+			<select id="estilo" name="estilo">
+				<jstl:forEach var="estilo" items="${estilos}">
+						<option value="${estilo.nombre}">${estilo.nombre}</option>
+				</jstl:forEach>
+			</select>
+		</div>
+
+		<div>
+			<input type="submit" value="<spring:message code="curso.create.save"/>" />
+		</div>
+	</form:form>
