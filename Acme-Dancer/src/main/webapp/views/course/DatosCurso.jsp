@@ -9,8 +9,7 @@
  --%>
 
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -35,11 +34,11 @@
             <tr>
                 <td>${curso.titulo}</td>
                 <td>${curso.nivel}</td>
-                <td>${curso.fechaInicio}</td>  
-                <td>${curso.fechaFin}</td>  
-                <td>${curso.hora}</td>  
-                <td>${curso.estilo.nombre}</td>  
-                <td>${curso.academia.nombreComercial}</td>     
+                <td>${curso.fechaInicio}</td>
+                <td>${curso.fechaFin}</td>
+                <td>${curso.hora}</td>
+                <td>${curso.estilo.nombre}</td>
+                <td>${curso.academia.nombreComercial}</td>
             </tr>
     </tbody>
 </table>

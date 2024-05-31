@@ -97,7 +97,8 @@ public class AcademiaService {
 	}
 
 	public int findId(final int userAccountId) {
-		final int idAdmin = this.academiaRepository.findId(userAccountId);
-		return idAdmin;
+		final int idAcademia = this.academiaRepository.findId(userAccountId);
+		System.out.println(idAcademia);
+		return idAcademia;
 	}
 }

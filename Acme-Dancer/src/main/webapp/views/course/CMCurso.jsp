@@ -42,7 +42,7 @@
                 <td>${cursos.fechaFin}</td>  
                 <td>${cursos.hora}</td>  
                 <td>${cursos.estilo.nombre}</td> 
-                <td><a href="course/EditarCurso.do?id=${cursos.id}">Editar</a>|
+                <td><a href="course/editarCurso.do?id=${cursos.id}">Editar</a>|
                 <a href="course/EliminarCurso.do?id=${cursos.id}">Eliminar</a></td>
                    
             </tr>

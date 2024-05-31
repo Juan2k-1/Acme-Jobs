@@ -75,5 +75,8 @@ public class CursoService {
 
 		return result;
 	}
+	public void flush() {
+		this.cursoRepository.flush();
+	}
 
 }
