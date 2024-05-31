@@ -41,9 +41,10 @@
                 <td>${cursos.fechaInicio}</td>  
                 <td>${cursos.fechaFin}</td>  
                 <td>${cursos.hora}</td>  
-                <td>${cursos.estilo.nombre}</td> 
+                <td>${cursos.estilo.nombre}</td>
+                 
                 <td><a href="course/editarCurso.do?id=${cursos.id}">Editar</a>|
-                <a href="course/EliminarCurso.do?id=${cursos.id}">Eliminar</a></td>
+                <a href="course/eliminarCurso.do?id=${cursos.id}">Eliminar</a></td>
                    
             </tr>
             </jstl:forEach>
