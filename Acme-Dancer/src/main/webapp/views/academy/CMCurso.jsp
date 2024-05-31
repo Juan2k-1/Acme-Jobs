@@ -18,28 +18,34 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<!-- Datos de curso -->
+<!-- CM de Cursos -->
 <table class="styles-table">
     <thead>
+
         <tr>
+        
             <th><spring:message code="curso.nombre"/></th>
             <th><spring:message code="curso.nivel"/></th>
             <th><spring:message code="curso.inicio"/></th>
             <th><spring:message code="curso.fin"/></th>
             <th><spring:message code="curso.hora"/></th>
             <th><spring:message code="curso.estilo"/></th>
-            <th><spring:message code="curso.academia"/></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
+    		<jstl:forEach var="cursos" items="${cursos}">
             <tr>
-                <td>${curso.titulo}</td>
-                <td>${curso.nivel}</td>
-                <td>${curso.fechaInicio}</td>  
-                <td>${curso.fechaFin}</td>  
-                <td>${curso.hora}</td>  
-                <td>${curso.estilo.nombre}</td>  
-                <td>${curso.academia.nombreComercial}</td>     
+                <td>${cursos.titulo}</td>
+                <td>${cursos.nivel}</td>
+                <td>${cursos.fechaInicio}</td>  
+                <td>${cursos.fechaFin}</td>  
+                <td>${cursos.hora}</td>  
+                <td>${cursos.estilo.nombre}</td> 
+                <td><a href="course/EditarCurso.do?id=${cursos.id}">Editar</a>|
+                <a href="course/EliminarCurso.do?id=${cursos.id}">Eliminar</a></td>
+                   
             </tr>
+            </jstl:forEach>
     </tbody>
 </table>

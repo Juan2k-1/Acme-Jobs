@@ -14,5 +14,6 @@
 		<put-attribute name="title" value="Datos Curso" />
 		<put-attribute name="body" value="/views/course/DatosCursos.jsp" />
 	</definition>
+
 		
 </tiles-definitions>
