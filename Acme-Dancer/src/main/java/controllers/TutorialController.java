@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,7 @@ public class TutorialController {
 		final int academia_id = this.academiaService.findId(userAccount.getId());
 		final Collection<Tutorial> tutoriales = this.tutorialService.findByAcademia(academia_id);
 		result.addObject("tutoriales", tutoriales);
+		result.addObject("nuevoTutorial", new Tutorial());
 		return result;
 	}
 
@@ -77,13 +79,51 @@ public class TutorialController {
 			result.addObject("tutorial", tutorial);
 			return result;
 		} else {
-			final Tutorial tutorial = this.tutorialService.findOne(id);
 
-			result = new ModelAndView("tutorial/editarTutorial");
-			result.addObject("tutorial", tutorial);
+			result = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
 			return result;
 		}
 
+	}
+	@RequestMapping(value = "/eliminarTutorial", method = {
+		RequestMethod.GET, RequestMethod.POST
+	})
+	public ModelAndView eliminarTutorial(@RequestParam("id") final int id) {
+		final ModelAndView mav = new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+		final Tutorial tutorial = this.tutorialService.findOne(id);
+		this.tutorialService.delete(tutorial);
+		return mav;
+	}
+
+	@RequestMapping(value = "/crearTutorial", method = RequestMethod.POST)
+	public ModelAndView crearTutorial(@Valid @ModelAttribute("nuevoEstilo") final Tutorial tutorial, final BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			final ModelAndView result = new ModelAndView("tutorial/mostrarTutoriales");
+			final UserAccount userAccount = LoginService.getPrincipal();
+			final int academia_id = this.academiaService.findId(userAccount.getId());
+			final Collection<Tutorial> tutoriales = this.tutorialService.findByAcademia(academia_id);
+			result.addObject("tutoriales", tutoriales);
+			return result;
+		}
+		final UserAccount userAccount = LoginService.getPrincipal();
+		final int academia_id = this.academiaService.findId(userAccount.getId());
+		final Academia academia = this.academiaService.findOne(academia_id);
+		tutorial.setAcademia(academia);
+		tutorial.setNumReproducciones(0);
+		this.tutorialService.save(tutorial);
+		return new ModelAndView("redirect:/tutorial/mostrarTutoriales.do");
+	}
+
+	@RequestMapping(value = "/verTutorial", method = RequestMethod.GET)
+	public ModelAndView verTutorial(@RequestParam("id") final int id) {
+
+		final Tutorial tutorial = this.tutorialService.findOne(id);
+		final ModelAndView result = new ModelAndView("tutorial/verTutorial");
+		final int numReproducciones = tutorial.getNumReproducciones() + 1;
+		tutorial.setNumReproducciones(numReproducciones);
+		this.tutorialService.save(tutorial);
+		result.addObject("tutorial", tutorial);
+		return result;
 	}
 
 }

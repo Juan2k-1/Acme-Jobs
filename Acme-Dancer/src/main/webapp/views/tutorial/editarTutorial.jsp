@@ -25,7 +25,7 @@
         </div>
         
          <div>
-            <label for="video"><spring:message code="tutorial.edit.description"/></label>
+            <label for="video">URL</label>
             <form:input path="video" id="video" />
         </div>
         

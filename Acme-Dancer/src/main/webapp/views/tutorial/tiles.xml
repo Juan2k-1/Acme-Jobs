@@ -14,5 +14,9 @@
 		<put-attribute name="title" value="Edit Tutorial" />
 		<put-attribute name="body" value="/views/tutorial/editarTutorial.jsp" />
 	</definition>
+	<definition name="tutorial/verTutorial" extends="master.page">
+		<put-attribute name="title" value="View Tutorial" />
+		<put-attribute name="body" value="/views/tutorial/verTutorial.jsp" />
+	</definition>
 		
 </tiles-definitions>
