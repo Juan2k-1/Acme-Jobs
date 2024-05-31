@@ -504,4 +504,14 @@
 		</property>
 	</bean>
 	
+		<bean id="curso4" class="domain.Curso">
+		<property name="titulo" value="titulocurso4" />
+		<property name="estilo" ref="estilo1" />
+		<property name="nivel" value="PROFESIONAL" />
+		<property name="academia" ref="actor3" />
+		<property name="fechaInicio" value="27/02/2025" />
+		<property name="fechaFin" value="27/03/2025" />
+		<property name="hora" value="12:15:00" />
+	</bean>
+	
 </beans>
