@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import domain.Academia;
 import domain.Curso;
-import security.LoginService;
-import security.UserAccount;
 import services.AcademiaService;
 import services.CursoService;;
 
